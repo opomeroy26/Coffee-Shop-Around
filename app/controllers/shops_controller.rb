@@ -9,7 +9,12 @@ class ShopsController < ApplicationController
     def create 
         shop = Shop.create!(shop_params)
         render json: shop, status: :created
+    end
 
+    def destroy 
+        shop = Shop.find(params[:id])
+        shop.destroy
+        head :no_content
     end
 
     private 

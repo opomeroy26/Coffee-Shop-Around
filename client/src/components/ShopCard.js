@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop}) {
   // const [newComment, setNewComment] = useState("")
   const comments = shop.comments
   const current = new Date();
@@ -70,7 +70,43 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments}) {
   .then(setForm(initialFormState))
 }
 
-  
+
+if (user.username === "Admin")
+return(
+  <Card style={{ width: '18rem' }}>
+  <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+  <Card.Body>
+    <Card.Title>{shop.name}</Card.Title>
+    <Card.Text>
+     {shop.pricing}
+     <br>
+     </br> Rating: {shop.rating} / 10
+     <br></br>
+     Liked by: {shop.likes} people
+     <button>♡</button>
+    </Card.Text>
+    <Button variant="secondary">Open Comments</Button>
+    <Button variant="primary">SEE ON MAP</Button>
+    <Button variant="primary" onClick={(e)=> onBookmarkClick(e)}>Bookmark</Button>
+    {comment}
+    <form id='form' onSubmit={handleCommentSubmit}>
+      <label> Comment: </label>
+        <input 
+          type="text" 
+          name="comment"
+          placeholder = 'Write a comment'
+          value={form.comment} 
+          onChange={handleChange} />
+        {/* <button type="submit">Post</button> */}
+      <input type="submit" value="Submit" />
+    </form>
+    <button onClick={() => onDeleteShop(shop)}>Delete Shop</button>
+  </Card.Body>
+
+
+</Card>
+)
+
     return(
   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />

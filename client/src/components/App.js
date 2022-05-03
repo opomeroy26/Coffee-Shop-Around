@@ -42,14 +42,17 @@ function handleBookmarkClick(e){
 }
 
 function handleAddToComments(form){
-  console.log(form)
   setComments([...comments, form])
 }
 
 function handleAddNewShop(shopForm){
-  console.log(shopForm)
   setShops([...shops, shopForm])
+}
 
+function handleDeleteShop(shop) {
+  fetch(`/shops/${shop.id}`, {method: "DELETE"})
+  const updatedShops = shops.filter( aShop => aShop !== shop)
+  setShops(updatedShops)
 }
 
 //Fetch User for Login
@@ -81,7 +84,8 @@ function handleAddNewShop(shopForm){
         comments = {comments}
         onBookmarkClick = {handleBookmarkClick}
         user= {user}
-        onAddToComments = {handleAddToComments}/>
+        onAddToComments = {handleAddToComments}
+        onDeleteShop = {handleDeleteShop}/>
     </Route>
     <Route exact path='/profile'>
       <Profile

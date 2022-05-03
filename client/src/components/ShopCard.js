@@ -3,14 +3,14 @@ import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function ShopCard ({shop, onBookmarkClick, user, onAddToComments}) {
-  const [newComment, setNewComment] = useState("")
+  // const [newComment, setNewComment] = useState("")
   const comments = shop.comments
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   
-  const commentors = comments.user
+  // const commentors = comments.user
   // const commentor = commentors.
-  console.log(comments)
+  // console.log(comments)
 
   const comment = comments.map((com) => (
     <ul>
@@ -69,8 +69,6 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments}) {
   .then((data) => onAddToComments(data))
   .then(setForm(initialFormState))
 }
-
-
 
   
     return(

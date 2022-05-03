@@ -19,6 +19,21 @@ function Header ({user, setUser}) {
         history.push("/profile")
     }
 
+    if (user.username === "Admin")
+    return (
+        <div>
+            <header>
+                Header
+                <button onClick={handleLogout}>Logout</button>
+                <button onClick={handleGoToProfile}>Profile</button>
+                <NavLink to ="/">Home</NavLink>
+                <NavLink to = "/bookmarked">Bookmarked</NavLink>
+                <NavLink to = "/addShop">AddShop</NavLink>
+            </header>
+        </div>
+    )
+
+
     return (
         <div>
             <header>

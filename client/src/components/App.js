@@ -56,11 +56,25 @@ function handleDeleteShop(shop) {
 }
 
 function handleDeleteComment(comment){
-  console.log("deleting comment", comment)
+  // console.log("deleting comment", comment)
   fetch(`/comments/${comment}`, {method: "DELETE"})
   const updatedComments = comments.filter( aComment => aComment.id !== comment.id  )
   setComments(updatedComments)
 }
+
+// function handleLikeClick(updatedShop){
+//   fetch(`/shops/${shop.id}`, {
+//     method: "PATCH",
+//     headers: {
+//       'Content-Type': 'application/json'
+//     },
+//     body: JSON.stringify(likes)
+//   })
+//   .then(resp => resp.json())
+//   .then(updatedLike => setShops(updatedLike))
+//   console.log("updating likes", updatedShop)
+//   setShops(updatedShop)
+// }
 
 //Fetch User for Login
  useEffect(() => {
@@ -93,7 +107,9 @@ function handleDeleteComment(comment){
         user= {user}
         onAddToComments = {handleAddToComments}
         onDeleteShop = {handleDeleteShop}
-        onDeleteComment = {handleDeleteComment}/>
+        onDeleteComment = {handleDeleteComment}
+        // onLikeClick = {handleLikeClick}
+        />
     </Route>
     <Route exact path='/profile'>
       <Profile
@@ -122,7 +138,9 @@ function handleDeleteComment(comment){
             onBookmarkClick = {handleBookmarkClick}
             user= {user}
             onAddToComments = {handleAddToComments}
-            onDeleteComment = {handleDeleteComment}/>
+            onDeleteComment = {handleDeleteComment}
+            // onLikeClick = {handleLikeClick}
+            />
         </Route>
         <Route exact path='/profile'>
           <Profile

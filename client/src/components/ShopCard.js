@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick}) {
   // const [newComment, setNewComment] = useState("")
   const comments = shop.comments
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const [likes, setLikes] = useState()
   
   // const commentors = comments.user
   // const commentor = commentors.
@@ -79,6 +80,22 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   .then(setForm(initialFormState))
 }
 
+function likeClick(){
+  console.log("liked", shop)
+  // setLikes(shop.likes += 1)
+  fetch(`/shops/${shop.id}/likes`, {
+    method: "PATCH",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({likes})
+  })
+  .then(resp => resp.json())
+  .then((updatedlikes) => setLikes(updatedlikes))
+  // .then(updatedShop => onLikeClick(updatedShop))
+
+}
+
 
 if (user.username === "Admin")
 return(
@@ -92,11 +109,9 @@ return(
      </br> Rating: {shop.rating} / 10
      <br></br>
      Liked by: {shop.likes} people
-     <button>♡</button>
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
-    <Button variant="primary" onClick={(e)=> onBookmarkClick(e)}>Bookmark</Button>
     {comment} 
 
     <form id='form' onSubmit={handleCommentSubmit}>
@@ -128,7 +143,7 @@ return(
      </br> Rating: {shop.rating} / 10
      <br></br>
      Liked by: {shop.likes} people
-     <button>♡</button>
+     <button onClick={()=>likeClick(shop)}>♡</button>
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>

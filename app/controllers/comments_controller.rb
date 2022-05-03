@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
     # before_action :authorize
     # skip_before_action :authorize
-    skip_before_action :authorize, only: [:index, :show, :destroy, :update, :create]
-
-
+    # skip_before_action :authorize, only: [:index, :show, :destroy, :update, :create]
 
     def index 
         comments = Comment.all 
@@ -23,9 +21,9 @@ class CommentsController < ApplicationController
 
     private 
 
-    def authorize 
-        return render json: {error: "Not authorized"}, status: :unauthorized
-    end
+    # def authorize 
+    #     return render json: {error: "Not authorized"}, status: :unauthorized
+    # end
 
     def comment_params 
         params.permit(:user_id, :shop_id, :comment, :postdate, :likes, :created_at)

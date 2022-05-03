@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   post "/signup", to: "users#create"
 
+  patch "/shops/:id/likes", to: "shops#increment_likes"
+
   
 
 

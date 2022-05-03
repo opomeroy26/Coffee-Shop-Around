@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-    skip_before_action :authorize 
+    # skip_before_action :authorize 
 
     def index 
         render json: Bookmark.all
@@ -7,7 +7,7 @@ class BookmarksController < ApplicationController
 
     private 
 
-    def authorize 
-        return render json: {error: "Not authorized"}, status: :unauthorized
-    end
+    # def authorize 
+    #     return render json: {error: "Not authorized"}, status: :unauthorized
+    # end
 end

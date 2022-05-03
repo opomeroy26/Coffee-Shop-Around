@@ -20,7 +20,8 @@ function App() {
   fetch("/shops")
   .then(resp => resp.json())
   .then(shops => setShops(shops))
-}, [])
+})
+//took out the [] so new comments/likes would render 
 
 //Fetch All Comments 
 useEffect(() => {
@@ -62,19 +63,10 @@ function handleDeleteComment(comment){
   setComments(updatedComments)
 }
 
-// function handleLikeClick(updatedShop){
-//   fetch(`/shops/${shop.id}`, {
-//     method: "PATCH",
-//     headers: {
-//       'Content-Type': 'application/json'
-//     },
-//     body: JSON.stringify(likes)
-//   })
-//   .then(resp => resp.json())
-//   .then(updatedLike => setShops(updatedLike))
-//   console.log("updating likes", updatedShop)
-//   setShops(updatedShop)
-// }
+function handleLikeClick(updatedlikes){
+  console.log("updating likes", updatedlikes)
+  setShops(shops)
+}
 
 //Fetch User for Login
  useEffect(() => {
@@ -108,7 +100,7 @@ function handleDeleteComment(comment){
         onAddToComments = {handleAddToComments}
         onDeleteShop = {handleDeleteShop}
         onDeleteComment = {handleDeleteComment}
-        // onLikeClick = {handleLikeClick}
+        onLikeClick = {handleLikeClick}
         />
     </Route>
     <Route exact path='/profile'>
@@ -139,7 +131,7 @@ function handleDeleteComment(comment){
             user= {user}
             onAddToComments = {handleAddToComments}
             onDeleteComment = {handleDeleteComment}
-            // onLikeClick = {handleLikeClick}
+            onLikeClick = {handleLikeClick}
             />
         </Route>
         <Route exact path='/profile'>

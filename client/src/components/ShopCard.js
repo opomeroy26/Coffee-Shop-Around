@@ -92,6 +92,7 @@ function likeClick(){
   })
   .then(resp => resp.json())
   .then((updatedlikes) => setLikes(updatedlikes))
+  .then((updatedlikes) => onLikeClick(updatedlikes))
   // .then(updatedShop => onLikeClick(updatedShop))
 
 }

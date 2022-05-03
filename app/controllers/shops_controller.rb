@@ -6,9 +6,17 @@ class ShopsController < ApplicationController
         render json: Shop.all
     end
 
+    def create 
+        shop = Shop.create!(shop_params)
+        render json: shop, status: :created
+
+    end
 
     private 
-
+    
+    def shop_params
+        params.permit(:user_id, :name, :pricing, :wifi, :rating, :likes, :longitude, :latitude)
+    end
 
 
 end

@@ -46,6 +46,12 @@ function handleAddToComments(form){
   setComments([...comments, form])
 }
 
+function handleAddNewShop(shopForm){
+  console.log(shopForm)
+  setShops([...shops, shopForm])
+
+}
+
 //Fetch User for Login
  useEffect(() => {
    fetch("/me").then((resp) => {
@@ -57,6 +63,39 @@ function handleAddToComments(form){
 
  if (!user) return <LogIn setUser = {setUser} />
 
+ if (user.username === "Admin")
+ return (
+  <div className="App">
+  <Header 
+    user={user} 
+    setUser={setUser}/>
+  <Switch>
+    <Route exact path= "/addShop">
+      <AddShop 
+      user ={user}
+      onAddNewShop = {handleAddNewShop}/>
+    </Route>
+    <Route exact path="/">
+      <ShopContainer
+        shops = {shops}
+        comments = {comments}
+        onBookmarkClick = {handleBookmarkClick}
+        user= {user}
+        onAddToComments = {handleAddToComments}/>
+    </Route>
+    <Route exact path='/profile'>
+      <Profile
+        user = {user}/>
+    </Route>
+    <Route exact path='/bookmarked'>
+      <Bookmarked
+      shops = {shops}
+      bookmarked = {bookmarked}/>
+    </Route>
+
+  </Switch>
+</div>
+ )
 
   return (
     <div className="App">
@@ -81,13 +120,10 @@ function handleAddToComments(form){
           shops = {shops}
           bookmarked = {bookmarked}/>
         </Route>
-        <Route exact path ='/addshop'>
-          <AddShop/>
-        </Route>
-
       </Switch>
     </div>
   );
+
 }
 
 export default App;

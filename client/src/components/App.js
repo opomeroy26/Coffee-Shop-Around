@@ -55,6 +55,13 @@ function handleDeleteShop(shop) {
   setShops(updatedShops)
 }
 
+function handleDeleteComment(comment){
+  console.log("deleting comment", comment)
+  fetch(`/comments/${comment}`, {method: "DELETE"})
+  const updatedComments = comments.filter( aComment => aComment.id !== comment.id  )
+  setComments(updatedComments)
+}
+
 //Fetch User for Login
  useEffect(() => {
    fetch("/me").then((resp) => {
@@ -85,7 +92,8 @@ function handleDeleteShop(shop) {
         onBookmarkClick = {handleBookmarkClick}
         user= {user}
         onAddToComments = {handleAddToComments}
-        onDeleteShop = {handleDeleteShop}/>
+        onDeleteShop = {handleDeleteShop}
+        onDeleteComment = {handleDeleteComment}/>
     </Route>
     <Route exact path='/profile'>
       <Profile
@@ -113,7 +121,8 @@ function handleDeleteShop(shop) {
             comments = {comments}
             onBookmarkClick = {handleBookmarkClick}
             user= {user}
-            onAddToComments = {handleAddToComments}/>
+            onAddToComments = {handleAddToComments}
+            onDeleteComment = {handleDeleteComment}/>
         </Route>
         <Route exact path='/profile'>
           <Profile

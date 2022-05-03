@@ -1,7 +1,7 @@
 import React from "react";
 import ShopCard from "./ShopCard";
 
-function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop }) {
+function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment }) {
     const shop = shops.map((shop) => (
         <ShopCard 
             key = {shop.id}
@@ -11,6 +11,7 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
             onAddToComments = {onAddToComments}
             user= {user}
             onDeleteShop = {onDeleteShop}
+            onDeleteComment = {onDeleteComment}
         />
     ) )
     return(

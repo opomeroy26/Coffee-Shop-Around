@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment}) {
   // const [newComment, setNewComment] = useState("")
   const comments = shop.comments
   const current = new Date();
@@ -12,15 +12,24 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop})
   // const commentor = commentors.
   // console.log(comments)
 
+  // function deleteComment(){
+  //   onDeleteComment(comment)
+  // }
+
   const comment = comments.map((com) => (
+    com.user.id === user.id ?
     <ul>
-      <li>
-        {com.comment} {com.created_at} {com.user.username}
-      </li>
-    </ul>))
+    <li>
+       {com.comment} {com.created_at} {com.user.username} <button onClick={() => onDeleteComment(com.id)}>delete</button>
+    </li>
+    </ul>
+    : <ul>
+    <li>
+       {com.comment} {com.created_at} {com.user.username}
+    </li>
+    </ul>
+    ))
 
-
-  // console.log(commentor)
 
     const initialFormState = {
       user_id: user.id , 
@@ -88,7 +97,8 @@ return(
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
     <Button variant="primary" onClick={(e)=> onBookmarkClick(e)}>Bookmark</Button>
-    {comment}
+    {comment} 
+
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>
         <input 
@@ -123,7 +133,7 @@ return(
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
     <Button variant="primary" onClick={(e)=> onBookmarkClick(e)}>Bookmark</Button>
-    {comment}
+    {comment} 
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>
         <input 

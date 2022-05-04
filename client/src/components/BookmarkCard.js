@@ -16,8 +16,8 @@ function BookmarkCard ({bookmark, user, onRemoveBookmark}){
           <Card.Title>{bookmark.shop.name}</Card.Title>
           <Card.Text>
            {bookmark.shop.pricing}
-           <br>
-           </br> Rating: {bookmark.shop.rating} / 10
+           <br></br> 
+           Wifi: {bookmark.shop.wifi ? "Yes" : "No"}
            <br></br>
            Liked by: {bookmark.shop.likes} people
           </Card.Text>

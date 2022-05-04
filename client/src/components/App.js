@@ -26,16 +26,17 @@ function App() {
 //Fetch All Comments 
 useEffect(() => {
   fetch("/comments")
-  .then(resp => resp.json())
-  .then(comment => setComments(comment))
+  .then((resp) => resp.json())
+  .then((comment) => setComments(comment))
 }, [])
 
 //Fetch Bookmarked
 useEffect(() => {
   fetch("/bookmarks")
-  .then(resp => resp.json())
-  .then(bookmarked => setBookmarked(bookmarked))
+  .then((resp) => resp.json())
+  .then((bookmarked) => setBookmarked(bookmarked))
 }, [])
+
 
 function handleBookmarkClick(shop){
   // e.preventDefault()

@@ -121,8 +121,9 @@ return(
     <Card.Title>{shop.name}</Card.Title>
     <Card.Text>
      {shop.pricing}
-     <br>
-     </br> Rating: {shop.rating} / 10
+     <br></br>
+
+     {/* </br> Rating: {shop.rating} / 10 */}
      <br></br>
      Liked by: {shop.likes} people
     </Card.Text>
@@ -155,8 +156,9 @@ return(
     <Card.Title>{shop.name}</Card.Title>
     <Card.Text>
      {shop.pricing}
-     <br>
-     </br> Rating: {shop.rating} / 10
+     <br></br>
+     Wifi: {shop.wifi ? "Yes" : "No"}
+      {/* Rating: {shop.rating} / 10 */}
      <br></br>
      Liked by: {shop.likes} people
      <button onClick={()=>likeClick(shop)}>♡</button>

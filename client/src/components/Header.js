@@ -1,10 +1,10 @@
 import React from "react";
-import { Nav } from "react-bootstrap";
+import { Nav, Dropdown} from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 
-function Header ({user, setUser}) {
+function Header ({user, setUser, onPopularFilter}) {
     const history = useHistory()
 
     function handleLogout(){
@@ -42,6 +42,24 @@ function Header ({user, setUser}) {
                 <button onClick={handleGoToProfile}>Profile</button>
                 <NavLink to ="/">Home</NavLink>
                 <NavLink to = "/bookmarked">Bookmarked</NavLink>
+            <div className ="filterWrapper">
+            <div className = "uimenu">
+                {/* <label>Sort by Size</label> */}
+            </div>
+            <div>
+                <select 
+                    className="uiSelectionDropdown"
+                    name="sort"
+                    // onChange={handleChangeOnSortBy}
+                    // value={sortBy}
+                    >
+                    <option value="All Sizes">All</option>
+                    <option value="Extra Small">Most Liked</option>
+                    <option value="Small">Price</option>
+                    <option value="Medium">Wifi</option>
+                    </select>
+                </div>
+                </div>
             </header>
         </div>
     )

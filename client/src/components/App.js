@@ -39,7 +39,7 @@ useEffect(() => {
 
 function handleBookmarkClick(shop){
   // e.preventDefault()
-  console.log("click bookmarked", shop.id, user.id)
+  // console.log("click bookmarked", shop.id, user.id)
   fetch('/bookmarks', {
     method:"POST",
     headers: {
@@ -53,6 +53,13 @@ function handleBookmarkClick(shop){
   })
   .then((resp) => resp.json())
   .then((data) => setBookmarked([...bookmarked, data]))
+}
+
+function handleRemoveBookmarkClick(bookmark){
+  console.log("removing bookmark", bookmark)
+  fetch(`/bookmarks/${bookmark.id}`, {method: "DELETE"})
+  const updatedBookmarks = bookmarked.filter(aBookmark => aBookmark.id !== bookmark.id)
+  setBookmarked(updatedBookmarks)
 }
 
 function handleAddToComments(form){
@@ -127,6 +134,7 @@ function handleDeleteComment(comment){
       shops = {shops}
       comments = {comments}
       user = {user}
+      // onRemoveBookmark = {handleRemoveBookmarkClick}
       />
     </Route>
 
@@ -158,7 +166,8 @@ function handleDeleteComment(comment){
           <Bookmarked
           shops = {shops}
           bookmarked = {bookmarked}
-          user={user}/>
+          user={user}
+          onRemoveBookmark = {handleRemoveBookmarkClick}/>
         </Route>
       </Switch>
     </div>

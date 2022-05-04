@@ -2,12 +2,13 @@ import React from "react";
 import ShopCard from "./ShopCard";
 import BookmarkCard from "./BookmarkCard";
 
-function Bookmarked ({shops, bookmarked, user, comments}) {
+function Bookmarked ({shops, bookmarked, user, comments, onRemoveBookmark}) {
     const bookmarks = bookmarked.map((bookmark) => (
         <BookmarkCard 
             key = {bookmark.id}
             bookmark = {bookmark}
             user = {user}
+            onRemoveBookmark = {onRemoveBookmark}
         
         />
     )

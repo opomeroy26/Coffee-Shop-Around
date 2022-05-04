@@ -3,7 +3,7 @@ import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes}) {
   // const [newComment, setNewComment] = useState("")
   // const b = bookmarked.map((bookmark) => (bookmark.shop))
   // console.log(b)
@@ -28,7 +28,7 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   const comments = shop.comments
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
-  const [likes, setLikes] = useState()
+  // const [likes, setLikes] = useState()
   
   // const commentors = comments.user
   // const commentor = commentors.

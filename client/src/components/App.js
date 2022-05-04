@@ -15,13 +15,14 @@ function App() {
   const [comments, setComments] = useState([])
   const [bookmarked, setBookmarked] = useState([])
   const [filterBy, setFilterBy] = useState("All")
+  const [likes, setLikes] = useState()
 
   //Fetch All Shops 
  useEffect(() => {
   fetch("/shops")
   .then(resp => resp.json())
   .then(shops => setShops(shops))
-},[])
+},[comments, likes])
 //added shops and worked, but select changed constatnly 
 //took out the [] so new comments/likes would render, broke auth 
 
@@ -103,13 +104,50 @@ function handleUpdateLikes(updatedLikes) {
 
 // console.log(filterBy)
 
-const filteredShops = shops.filter((shop) => {
+const price = shops.sort((shop1, shop2) => {
+  // console.log(shop1.likes - shop2.likes)
+return(shop1.pricing.localeCompare(shop2.pricing))
+})
+
+const all = shops.sort((shop1, shop2) => {
+  return(shop1.id - shop2.id)
+})
+
+// console.log(test)
+
+const filteredShops = shops
+.filter((shop) => {
   if (filterBy === "All") {
     return shop
   } else if (filterBy === "Wifi") {
-    return shop.wifi === true 
-  } 
+    return (shop.wifi === true) 
+  // } else if (filterBy === "Price"){
+  //   return shop.pricing === "$"
+  } else {
+    return (shop.likes >= 5)
+  }
 })
+.sort((shop1, shop2) => {
+  if (filterBy === "Price") {
+    return (shop1.pricing.localeCompare(shop2.pricing))
+   } else if (filterBy === "Most Liked") {
+     return (shop2.likes - shop1.likes)
+   } else {
+      return shop1
+    }
+  }
+)
+
+
+// const filteredShops = shops.sort((shop1, shop2) => {
+//   if (filterBy === "All"){
+//     return shop1.id - shop2.id
+//   } else if (filterBy === "Price"){
+//     return shop1.pricing - shop2.pricing
+//   } else {
+//     return shop1.id - shop2.id
+//   }
+// })
 
 // function handleLikeClick(updatedlikes){
 //   console.log("updating likes", updatedlikes)
@@ -191,6 +229,8 @@ const filteredShops = shops.filter((shop) => {
             bookmarked = {bookmarked}
             setShops = {setShops}
             onUpdateLikes = {handleUpdateLikes}
+            likes = {likes}
+            setLikes = {setLikes}
             />
         </Route>
         <Route exact path='/profile'>

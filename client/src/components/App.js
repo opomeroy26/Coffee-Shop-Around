@@ -20,8 +20,8 @@ function App() {
   fetch("/shops")
   .then(resp => resp.json())
   .then(shops => setShops(shops))
-})
-//took out the [] so new comments/likes would render 
+},[])
+//took out the [] so new comments/likes would render, broke auth 
 
 //Fetch All Comments 
 useEffect(() => {
@@ -37,9 +37,9 @@ useEffect(() => {
   .then(bookmarked => setBookmarked(bookmarked))
 }, [])
 
-function handleBookmarkClick(e){
-  e.preventDefault()
-  console.log("clicked")
+function handleBookmarkClick(shop){
+  // e.preventDefault()
+  console.log("click bookmarked", shop)
 }
 
 function handleAddToComments(form){
@@ -63,10 +63,10 @@ function handleDeleteComment(comment){
   setComments(updatedComments)
 }
 
-function handleLikeClick(updatedlikes){
-  console.log("updating likes", updatedlikes)
-  setShops(shops)
-}
+// function handleLikeClick(updatedlikes){
+//   console.log("updating likes", updatedlikes)
+//   setShops(shops)
+// }
 
 //Fetch User for Login
  useEffect(() => {
@@ -100,7 +100,8 @@ function handleLikeClick(updatedlikes){
         onAddToComments = {handleAddToComments}
         onDeleteShop = {handleDeleteShop}
         onDeleteComment = {handleDeleteComment}
-        onLikeClick = {handleLikeClick}
+        setShops ={setShops}
+        // onLikeClick = {handleLikeClick}
         />
     </Route>
     <Route exact path='/profile'>
@@ -109,14 +110,16 @@ function handleLikeClick(updatedlikes){
     </Route>
     <Route exact path='/bookmarked'>
       <Bookmarked
+      bookmarked={bookmarked}
       shops = {shops}
-      bookmarked = {bookmarked}/>
+      comments = {comments}
+      user = {user}
+      />
     </Route>
 
   </Switch>
 </div>
  )
-
   return (
     <div className="App">
       <Header 
@@ -131,7 +134,7 @@ function handleLikeClick(updatedlikes){
             user= {user}
             onAddToComments = {handleAddToComments}
             onDeleteComment = {handleDeleteComment}
-            onLikeClick = {handleLikeClick}
+            // onLikeClick = {handleLikeClick}
             />
         </Route>
         <Route exact path='/profile'>
@@ -141,7 +144,8 @@ function handleLikeClick(updatedlikes){
         <Route exact path='/bookmarked'>
           <Bookmarked
           shops = {shops}
-          bookmarked = {bookmarked}/>
+          bookmarked = {bookmarked}
+          user={user}/>
         </Route>
       </Switch>
     </div>

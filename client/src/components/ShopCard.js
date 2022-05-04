@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops}) {
   // const [newComment, setNewComment] = useState("")
   const comments = shop.comments
   const current = new Date();
@@ -92,7 +92,7 @@ function likeClick(){
   })
   .then(resp => resp.json())
   .then((updatedlikes) => setLikes(updatedlikes))
-  .then((updatedlikes) => onLikeClick(updatedlikes))
+  // .then((updatedlikes) => onLikeClick(updatedlikes))
   // .then(updatedShop => onLikeClick(updatedShop))
 
 }
@@ -148,7 +148,7 @@ return(
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
-    <Button variant="primary" onClick={(e)=> onBookmarkClick(e)}>Bookmark</Button>
+    <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
     {comment} 
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>

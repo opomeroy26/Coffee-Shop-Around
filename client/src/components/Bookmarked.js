@@ -1,77 +1,91 @@
 import React from "react";
 import ShopCard from "./ShopCard";
+import BookmarkCard from "./BookmarkCard";
 
-function Bookmarked ({shops, comments, bookmarked }) {
-    // const shop = shops.map((shop) => (
+function Bookmarked ({shops, bookmarked, user, comments}) {
+    const bookmarks = bookmarked.map((bookmark) => (
+        <BookmarkCard 
+            key = {bookmark.id}
+            bookmark = {bookmark}
+            user = {user}
+        
+        />
+    )
+    
+    )
+
+
+
+
+
+
+
+
+    return (
+        <div>
+            bookmarked
+           {bookmarks}
+        </div>
+    )
+
+    // const shop = bookmarkShop.map((shop) => (
+    //     // console.log(shop)
     //     <ShopCard 
-    //         key = {shop.id}
-    //         shop = {shop}
-    //         comments = {comments}
+    //     key = {shop.id}
+    //     shop = {shop}
+    //     comments = {comments}
+    //     user = {user} 
     //     />
     // ))
 
-    const bookmarkedShops = bookmarked.map((bookmarkShop) => (
-        // console.log(bookmarkShop.shop.name)
-        // <ShopCard
-        //     key={bookmarkShop.id}
-        //     shop = {bookmarkShop.shop}
+//     const bookmarkShop = bookmarked.map((bookmark) =>
+//     bookmark.shop)
+
+//     const bookmarkUser = bookmarked.map((bookmark) =>
+//     bookmark.user)
+
+
+//     const shop = shops.map((shop) => (
+//         <ShopCard 
+//             key = {shop.id}
+//             shop = {shop}
+//             user = {user}
         
-        //  />
-        bookmarkShop.shop
-    ))
+//         />
+//     ))
+    
+//     if (bookmarkUser.name === user.name)
+//  return(
+//      <div>
+//          bookmarked
+//          {shop}
+//      </div>
+//  )
 
-    const shop = bookmarkedShops.map(shop => (
-        <ShopCard 
-        key = {shop.id}
-        shop = {shop}
-        />
-    ))
+//  return (
+//      <div> bookmarked?</div>
+//  )
 
-    console.log(bookmarkedShops)
 
-    // const bookmarkedShops = (bookmarked.bookmarked === true )
-    // const mapppedShops = bookmarked.shop
-    // const bookshop = mapppedShops.map((shop) => (
+
+
+
+    // const shop = shops.map((shop) => (
     //     <ShopCard 
-    //             key = {shop.id}
-    //             shop = {shop}
-    //             comments = {comments}
-    //         />))
-
-    // const bookmarks = bookmarked.map((bookmark => bookmark.shop))
-    // console.log(bookmarks)
-
-    // console.log(bookmarked)
-
-    // const bookmarkedShop = bookmarks.map((shop) => (
-    //     <ShopCard 
-    //         key= {shop.id}
-    //         shop = {shop}
-    //         comments = {comments } />
+    //         key={shop.id}
+    //         shop={shop}
+    //         user={user}
+        
+    //     />
     // ))
-
-    // const bookmarkedShop = bookmarks.map((shop) => shop)
-
-    // const shopshop = bookmarkedShop.map((shop) => (
-
-    //     <ShopCard 
-    //         key = {shop.id}
-    //         shop = {shop} />
-    // ))
-
-   
-
-
-    return(
-        <div>
-            {/* {bookshop} */}
-            {/* {bookmarkedShop} */}
-            {/* {shopshop} */}
-            {/* {bookmarkedShops} */}
-            test
-            {/* {shop} */}
-        </div>
-    )
+    // const shopp = shop.map((shop) => shop.bookmarks)
+    // console.log(shopp)
+    // return(
+    //     <div>
+    //         bookmarked
+    //         {shop}
+    //     </div>
+    // )
 }
 
 export default Bookmarked;

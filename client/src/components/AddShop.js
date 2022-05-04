@@ -110,7 +110,7 @@ function handleShopFormSubmit(e) {
                                     <div className='form-group'>
                                         <label htmlFor='latitude' className='label'>Latitude</label>
                                         <input
-                                            type='text'
+                                            type='number'
                                             className='form-control'
                                             id='latitude'
                                             placeholder='enter the latitude of your shop'

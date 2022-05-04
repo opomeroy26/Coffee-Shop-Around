@@ -2,8 +2,23 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops}) {
   // const [newComment, setNewComment] = useState("")
+  // const b = bookmarked.map((bookmark) => (bookmark.shop))
+  // console.log(b)
+  // console.log(b.some(shop))
+  // console.log(b.includes(shop))
+  // console.log(shops.includes(bookmarked))
+  const bookmarkObj = bookmarked.some(bookmarked => { 
+    if (bookmarked.shop.id === shop.id) {
+      return true;
+    }
+    return false;
+  });
+  // console.log(bookobj)
+
+
+  
   const comments = shop.comments
   const current = new Date();
   const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -148,7 +163,8 @@ return(
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
-    <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
+    <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button>
+    {/* onClick={()=> onBookmarkClick(shop)}>Bookmark</Button> */}
     {comment} 
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>
@@ -162,10 +178,10 @@ return(
       <input type="submit" value="Submit" />
     </form>
   </Card.Body>
-
-
 </Card>
     )
 }
+
+
 
 export default ShopCard;

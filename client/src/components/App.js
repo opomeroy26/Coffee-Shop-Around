@@ -40,6 +40,7 @@ useEffect(() => {
 function handleBookmarkClick(shop){
   // e.preventDefault()
   // console.log("click bookmarked", shop.id, user.id)
+
   fetch('/bookmarks', {
     method:"POST",
     headers: {
@@ -53,10 +54,12 @@ function handleBookmarkClick(shop){
   })
   .then((resp) => resp.json())
   .then((data) => setBookmarked([...bookmarked, data]))
+  // .then((data) => setBookmarked(bookmarked.filter((data) => data !== shop)))
+
 }
 
 function handleRemoveBookmarkClick(bookmark){
-  console.log("removing bookmark", bookmark)
+  // console.log("removing bookmark", bookmark)
   fetch(`/bookmarks/${bookmark.id}`, {method: "DELETE"})
   const updatedBookmarks = bookmarked.filter(aBookmark => aBookmark.id !== bookmark.id)
   setBookmarked(updatedBookmarks)
@@ -81,6 +84,10 @@ function handleDeleteComment(comment){
   fetch(`/comments/${comment}`, {method: "DELETE"})
   const updatedComments = comments.filter( aComment => aComment.id !== comment.id  )
   setComments(updatedComments)
+}
+
+function handlePopularFilter(){
+  console.log("filtering")
 }
 
 // function handleLikeClick(updatedlikes){
@@ -145,7 +152,8 @@ function handleDeleteComment(comment){
     <div className="App">
       <Header 
         user={user} 
-        setUser={setUser} />
+        setUser={setUser}
+        onPopularFilter = {handlePopularFilter} />
       <Switch>
         <Route exact path="/">
           <ShopContainer
@@ -156,6 +164,7 @@ function handleDeleteComment(comment){
             onAddToComments = {handleAddToComments}
             onDeleteComment = {handleDeleteComment}
             // onLikeClick = {handleLikeClick}
+            bookmarked = {bookmarked}
             />
         </Route>
         <Route exact path='/profile'>

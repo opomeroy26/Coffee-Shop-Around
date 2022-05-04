@@ -1,20 +1,26 @@
 import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes}) {
   // const [newComment, setNewComment] = useState("")
   // const b = bookmarked.map((bookmark) => (bookmark.shop))
   // console.log(b)
   // console.log(b.some(shop))
   // console.log(b.includes(shop))
   // console.log(shops.includes(bookmarked))
-  const bookmarkObj = bookmarked.some(bookmarked => { 
-    if (bookmarked.shop.id === shop.id) {
-      return true;
-    }
-    return false;
-  });
+
+  // const history = useHistory()
+
+
+
+  // const bookmarkObj = bookmarked.some(bookmarked => { 
+  //   if (bookmarked.shop.id === shop.id) {
+  //     return true;
+  //   }
+  //   return false;
+  // });
   // console.log(bookobj)
 
 
@@ -83,10 +89,10 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
       postdate: form.postdate
     }
 
-  fetch('/comments', {
+  fetch("/comments", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type":"application/json",
     },
     body: JSON.stringify(newComment)
   })
@@ -96,21 +102,31 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
 }
 
 function likeClick(){
-  console.log("liked", shop)
-  // setLikes(shop.likes += 1)
   fetch(`/shops/${shop.id}/likes`, {
     method: "PATCH",
     headers: {
-      'Content-Type': 'application/json'
+      "Content-Type":"application/json"
     },
-    body: JSON.stringify({likes})
+    body: JSON.stringify(likes)
   })
   .then(resp => resp.json())
   .then((updatedlikes) => setLikes(updatedlikes))
-  // .then((updatedlikes) => onLikeClick(updatedlikes))
-  // .then(updatedShop => onLikeClick(updatedShop))
+  // .then((updatedlikes) => onUpdateLikes(updatedlikes))
+} 
 
-}
+// function likeClick(){
+//   shop.likes += 1
+//   fetch(`/shops/${shop.id}`, {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type":"application/json"
+//     },
+//     body: JSON.stringify(likes)
+//   })
+//   .then(resp => resp.json())
+//   // .then((updatedlikes) => setLikes(updatedlikes))
+//   .then((updatedlikes) => onUpdateLikes(updatedlikes))
+// } 
 
 
 if (user.username === "Admin")
@@ -165,8 +181,8 @@ return(
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary">SEE ON MAP</Button>
-    <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button>
-    {/* onClick={()=> onBookmarkClick(shop)}>Bookmark</Button> */}
+    {/* <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button> */}
+    <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
     {comment} 
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>

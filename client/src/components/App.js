@@ -14,6 +14,7 @@ function App() {
   const [shops, setShops] = useState([])
   const [comments, setComments] = useState([])
   const [bookmarked, setBookmarked] = useState([])
+  const [filterBy, setFilterBy] = useState("All")
 
   //Fetch All Shops 
  useEffect(() => {
@@ -21,6 +22,7 @@ function App() {
   .then(resp => resp.json())
   .then(shops => setShops(shops))
 },[])
+//added shops and worked, but select changed constatnly 
 //took out the [] so new comments/likes would render, broke auth 
 
 //Fetch All Comments 
@@ -28,7 +30,8 @@ useEffect(() => {
   fetch("/comments")
   .then((resp) => resp.json())
   .then((comment) => setComments(comment))
-}, [])
+},[] )
+//added comments but GET happened repetatively 
 
 //Fetch Bookmarked
 useEffect(() => {
@@ -83,13 +86,30 @@ function handleDeleteShop(shop) {
 function handleDeleteComment(comment){
   // console.log("deleting comment", comment)
   fetch(`/comments/${comment}`, {method: "DELETE"})
-  const updatedComments = comments.filter( aComment => aComment.id !== comment.id  )
+  const updatedComments = comments.filter( aComment => aComment.id !== comment  )
   setComments(updatedComments)
 }
 
-function handlePopularFilter(){
-  console.log("filtering")
+function handleUpdateLikes(updatedLikes) {
+  const updatedShopLike = shops.map((shop) => {
+    if (updatedLikes.id === shop.id){
+      return updatedLikes
+    } else {
+      return shop
+    }
+  })
+  setShops(updatedShopLike)
 }
+
+// console.log(filterBy)
+
+const filteredShops = shops.filter((shop) => {
+  if (filterBy === "All") {
+    return shop
+  } else if (filterBy === "Wifi") {
+    return shop.wifi === true 
+  } 
+})
 
 // function handleLikeClick(updatedlikes){
 //   console.log("updating likes", updatedlikes)
@@ -112,7 +132,9 @@ function handlePopularFilter(){
   <div className="App">
   <Header 
     user={user} 
-    setUser={setUser}/>
+    setUser={setUser}
+    filterBy = {filterBy}
+    setFilterBy = {setFilterBy}/>
   <Switch>
     <Route exact path= "/addShop">
       <AddShop 
@@ -121,7 +143,7 @@ function handlePopularFilter(){
     </Route>
     <Route exact path="/">
       <ShopContainer
-        shops = {shops}
+        shops = {filteredShops}
         comments = {comments}
         onBookmarkClick = {handleBookmarkClick}
         user= {user}
@@ -154,11 +176,12 @@ function handlePopularFilter(){
       <Header 
         user={user} 
         setUser={setUser}
-        onPopularFilter = {handlePopularFilter} />
+        filterBy = {filterBy}
+        setFilterBy = {setFilterBy} />
       <Switch>
         <Route exact path="/">
           <ShopContainer
-            shops = {shops}
+            shops = {filteredShops}
             comments = {comments}
             onBookmarkClick = {handleBookmarkClick}
             user= {user}
@@ -166,6 +189,8 @@ function handlePopularFilter(){
             onDeleteComment = {handleDeleteComment}
             // onLikeClick = {handleLikeClick}
             bookmarked = {bookmarked}
+            setShops = {setShops}
+            onUpdateLikes = {handleUpdateLikes}
             />
         </Route>
         <Route exact path='/profile'>

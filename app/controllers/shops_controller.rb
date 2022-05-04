@@ -31,7 +31,7 @@ class ShopsController < ApplicationController
     def increment_likes
         shop = Shop.find_by(id: params[:id]) 
         shop.update!(likes: shop.likes + 1)
-        render json: shop
+        render json: shop, status: :created 
     end
 
     private 

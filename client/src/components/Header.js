@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 
-function Header ({user, setUser, onPopularFilter}) {
+function Header ({user, setUser, setFilterBy, filterBy}) {
     const history = useHistory()
 
     function handleLogout(){
@@ -17,6 +17,10 @@ function Header ({user, setUser, onPopularFilter}) {
 
     function handleGoToProfile(){
         history.push("/profile")
+    }
+
+    function handleFilterBy(e){
+        setFilterBy(e.target.value)
     }
 
     if (user.username === "Admin")
@@ -50,13 +54,13 @@ function Header ({user, setUser, onPopularFilter}) {
                 <select 
                     className="uiSelectionDropdown"
                     name="sort"
-                    // onChange={handleChangeOnSortBy}
-                    // value={sortBy}
+                    onChange={handleFilterBy}
+                    value={filterBy}
                     >
-                    <option value="All Sizes">All</option>
-                    <option value="Extra Small">Most Liked</option>
-                    <option value="Small">Price</option>
-                    <option value="Medium">Wifi</option>
+                    <option value="All">All</option>
+                    <option value="Most Liked">Most Liked</option>
+                    <option value="Price">Price</option>
+                    <option value="Wifi">Wifi</option>
                     </select>
                 </div>
                 </div>

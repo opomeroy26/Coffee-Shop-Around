@@ -3,8 +3,8 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function BookmarkCard ({bookmark, user}){
-    console.log(bookmark)
-    console.log(user)
+    // console.log(bookmark)
+    // console.log(user)
     // const bookmarkUser = shop.user
     // const mappBook = bookmarkUser.map((user) => (user.id))
 
@@ -23,6 +23,7 @@ function BookmarkCard ({bookmark, user}){
           </Card.Text>
           <Button variant="secondary">Open Comments</Button>
           <Button variant="primary">SEE ON MAP</Button>
+          <Button variant="primary">Remove from Bookmarks</Button>
       
           <form id='form' >
             <label> Comment: </label>

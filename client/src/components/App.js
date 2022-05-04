@@ -39,7 +39,20 @@ useEffect(() => {
 
 function handleBookmarkClick(shop){
   // e.preventDefault()
-  console.log("click bookmarked", shop)
+  console.log("click bookmarked", shop.id, user.id)
+  fetch('/bookmarks', {
+    method:"POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id: user.id,
+      shop_id: shop.id,
+      bookmarked: true
+    })
+  })
+  .then((resp) => resp.json())
+  .then((data) => setBookmarked([...bookmarked, data]))
 }
 
 function handleAddToComments(form){

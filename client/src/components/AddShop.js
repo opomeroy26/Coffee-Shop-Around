@@ -140,7 +140,6 @@ function handleShopFormSubmit(e) {
                         </form>
                     </div>
     )
-
 }
 
 export default AddShop;

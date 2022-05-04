@@ -5,7 +5,16 @@ class BookmarksController < ApplicationController
         render json: Bookmark.all
     end
 
+    def create 
+        bookmark = Bookmark.create(bookmark_params)
+        render json: bookmark, status: :created
+    end
+
     private 
+
+    def bookmark_params
+        params.permit(:user_id, :shop_id, :bookmarked)
+    end
 
     # def authorize 
     #     return render json: {error: "Not authorized"}, status: :unauthorized

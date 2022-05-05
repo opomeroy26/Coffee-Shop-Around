@@ -7,6 +7,10 @@ import ShopContainer from './ShopContainer';
 import Profile from './Profile';
 import Bookmarked from './Bookmarked';
 import AddShop from './AddShop';
+// import Map from 'react-map-gl'; 
+// import 'mapbox-gl/dist/mapbox-gl.css';
+
+// const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
 
 
 function App() {
@@ -136,6 +140,16 @@ const filteredShops = shops
     setUser={setUser}
     filterBy = {filterBy}
     setFilterBy = {setFilterBy}/>
+     {/* <Map
+      initialViewState={{
+        longitude: -122.4,
+        latitude: 37.8,
+        zoom: 14
+      }}
+      style={{width: 600, height: 400}}
+      mapStyle="mapbox://styles/mapbox/streets-v9"
+      mapboxAccessToken={MAPBOX_TOKEN}
+    /> */}
   <Switch>
     <Route exact path= "/addShop">
       <AddShop 

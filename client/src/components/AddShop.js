@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import { useHistory } from "react-router-dom";
 
 function AddShop ({user, onAddNewShop}) {
-// if (user.username === "Admin")
 const history = useHistory()
 
 const initialShopForm = {
@@ -48,9 +47,7 @@ function handleShopFormSubmit(e) {
     .then(history.push("/"))
 
 }
-
-
-    return(
+    return (
 
         <div id='newItemForm'>
                         <form id='form' className='border border-secondary rounded p-2 m-2' onSubmit = {handleShopFormSubmit} >

@@ -13,6 +13,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SignUp from "./SignUp";
+import Contact from "./Contact";
+import { NavLink } from "react-router-dom";
+import { Route } from "react-router-dom";
 
 function Copyright() {
     return (
@@ -28,6 +31,7 @@ export default function LogIn( {setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [showLogin, setShowLogin] = useState(true)
+    const [noshowContactForm, setContactForm] = useState(true)
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -46,7 +50,7 @@ export default function LogIn( {setUser}) {
         })
     };
 
-
+// if (showLogin === true) 
   return (
     <div>
         {showLogin ? (
@@ -109,6 +113,10 @@ export default function LogIn( {setUser}) {
                 <Button onClick={() => setShowLogin(false)}>
                   {"Don't have an account? Sign Up"}
                 </Button>
+                <Button onClick={() => setContactForm(false)}>
+                  {"contact"}
+                </Button>
+                
               </Grid>
             </Grid>
           </Box>

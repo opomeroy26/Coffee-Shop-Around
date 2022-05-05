@@ -23,8 +23,6 @@ function App() {
   .then(resp => resp.json())
   .then(shops => setShops(shops))
 },[comments, likes])
-//added shops and worked, but select changed constatnly 
-//took out the [] so new comments/likes would render, broke auth 
 
 //Fetch All Comments 
 useEffect(() => {
@@ -32,7 +30,6 @@ useEffect(() => {
   .then((resp) => resp.json())
   .then((comment) => setComments(comment))
 },[] )
-//added comments but GET happened repetatively 
 
 //Fetch Bookmarked
 useEffect(() => {
@@ -43,9 +40,6 @@ useEffect(() => {
 
 
 function handleBookmarkClick(shop){
-  // e.preventDefault()
-  // console.log("click bookmarked", shop.id, user.id)
-
   fetch('/bookmarks', {
     method:"POST",
     headers: {
@@ -64,7 +58,6 @@ function handleBookmarkClick(shop){
 }
 
 function handleRemoveBookmarkClick(bookmark){
-  // console.log("removing bookmark", bookmark)
   fetch(`/bookmarks/${bookmark.id}`, {method: "DELETE"})
   const updatedBookmarks = bookmarked.filter(aBookmark => aBookmark.id !== bookmark.id)
   setBookmarked(updatedBookmarks)
@@ -85,7 +78,6 @@ function handleDeleteShop(shop) {
 }
 
 function handleDeleteComment(comment){
-  // console.log("deleting comment", comment)
   fetch(`/comments/${comment}`, {method: "DELETE"})
   const updatedComments = comments.filter( aComment => aComment.id !== comment  )
   setComments(updatedComments)
@@ -102,29 +94,16 @@ function handleUpdateLikes(updatedLikes) {
   setShops(updatedShopLike)
 }
 
-// console.log(filterBy)
 
-const price = shops.sort((shop1, shop2) => {
-  // console.log(shop1.likes - shop2.likes)
-return(shop1.pricing.localeCompare(shop2.pricing))
-})
-
-const all = shops.sort((shop1, shop2) => {
-  return(shop1.id - shop2.id)
-})
-
-// console.log(test)
-
+//Filtering Shops 
 const filteredShops = shops
 .filter((shop) => {
   if (filterBy === "All") {
     return shop
   } else if (filterBy === "Wifi") {
     return (shop.wifi === true) 
-  // } else if (filterBy === "Price"){
-  //   return shop.pricing === "$"
   } else {
-    return (shop.likes >= 5)
+    return shop
   }
 })
 .sort((shop1, shop2) => {
@@ -133,26 +112,10 @@ const filteredShops = shops
    } else if (filterBy === "Most Liked") {
      return (shop2.likes - shop1.likes)
    } else {
-      return shop1
+      return shop1.id - shop2.id
     }
   }
 )
-
-
-// const filteredShops = shops.sort((shop1, shop2) => {
-//   if (filterBy === "All"){
-//     return shop1.id - shop2.id
-//   } else if (filterBy === "Price"){
-//     return shop1.pricing - shop2.pricing
-//   } else {
-//     return shop1.id - shop2.id
-//   }
-// })
-
-// function handleLikeClick(updatedlikes){
-//   console.log("updating likes", updatedlikes)
-//   setShops(shops)
-// }
 
 //Fetch User for Login
  useEffect(() => {

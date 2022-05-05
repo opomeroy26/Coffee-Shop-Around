@@ -3,10 +3,6 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 
 function BookmarkCard ({bookmark, user, onRemoveBookmark}){
-    // console.log(bookmark)
-    // console.log(user)
-    // const bookmarkUser = shop.user
-    // const mappBook = bookmarkUser.map((user) => (user.id))
 
     if (user.username === bookmark.user.username)
     return(
@@ -39,13 +35,8 @@ function BookmarkCard ({bookmark, user, onRemoveBookmark}){
           </form>
           {/* <button onClick={() => onDeleteShop(shop)}>Delete Shop</button> */}
         </Card.Body>
-      
-      
       </Card>
     )
-    // return(
-    //     <div>no shops</div>
-    // )
 }
 
 export default BookmarkCard;

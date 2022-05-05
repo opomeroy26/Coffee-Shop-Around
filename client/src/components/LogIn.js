@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useHistory } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -32,6 +33,7 @@ export default function LogIn( {setUser}) {
     const [password, setPassword] = useState("")
     const [showLogin, setShowLogin] = useState(true)
     const [noshowContactForm, setContactForm] = useState(true)
+    const history = useHistory()
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -44,6 +46,7 @@ export default function LogIn( {setUser}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user)=> setUser(user));
+                history.push("/")
             } else {
                 r.json().then((err) => window.alert(err.errors))
             }

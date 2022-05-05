@@ -11,6 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LogIn from './LogIn';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
     return (
@@ -26,6 +27,7 @@ export default function SignUp( {setUser}) {
     const [showLogin, setShowLogin] = useState(true)
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const history = useHistory()
 
     function handleSubmit(event){
         event.preventDefault();
@@ -38,6 +40,7 @@ export default function SignUp( {setUser}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user)=> setUser(user));
+                history.push("/")
             } else {
                 r.json().then(err => window.alert(err.errors))
             }

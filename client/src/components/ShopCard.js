@@ -2,8 +2,12 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+// import Map, {Marker, Popup} from 'react-map-gl'; 
+// import 'mapbox-gl/dist/mapbox-gl.css';
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes}) {
+// const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
+
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick}) {
   // const [newComment, setNewComment] = useState("")
   // const b = bookmarked.map((bookmark) => (bookmark.shop))
   // console.log(b)
@@ -22,6 +26,11 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   //   return false;
   // });
   // console.log(bookobj)
+//   const [viewState, setViewState] = useState({
+//     longitude: -122.4,
+//     latitude: 37.8,
+//     zoom: 11,
+// })
 
 
   
@@ -133,6 +142,7 @@ if (user.username === "Admin")
 return(
   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+
   <Card.Body>
     <Card.Title>{shop.name}</Card.Title>
     <Card.Text>
@@ -144,7 +154,7 @@ return(
      Liked by: {shop.likes} people
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
-    <Button variant="primary">SEE ON MAP</Button>
+    <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
     {comment} 
 
     <form id='form' onSubmit={handleCommentSubmit}>
@@ -168,6 +178,7 @@ return(
     return(
   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+  
   <Card.Body>
     <Card.Title>{shop.name}</Card.Title>
     <Card.Text>
@@ -180,7 +191,7 @@ return(
      <button onClick={()=>likeClick(shop)}>♡</button>
     </Card.Text>
     <Button variant="secondary">Open Comments</Button>
-    <Button variant="primary">SEE ON MAP</Button>
+    <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
     {/* <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button> */}
     <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
     {comment} 

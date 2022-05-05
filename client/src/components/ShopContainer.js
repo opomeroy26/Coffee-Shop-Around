@@ -7,7 +7,8 @@ import { flexbox } from "@mui/system";
 import "../App.css";
 
 
-const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
+ const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
+// const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YXU0MGQwMWNyM2NvMnprZ3htNGY3In0.kHGzJWzWycU6Ybvhzdu2zw'
 
 
 function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, onUpdateLikes, likes, setLikes }) {
@@ -56,6 +57,36 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
         <div>
              <Container>
                 <Row>
+                    {/* <Map
+                     initialViewState={{
+                        longitude: -122.4,
+                        latitude: 37.8,
+                        zoom: 11,
+                        }}
+                        // style={{width: 600, height: 400}}
+                        onMove={evt => setViewState(evt.viewState)}
+                        style = {{width:1150, height: 500 }}
+                        mapStyle="mapbox://styles/mapbox/streets-v9"
+                        mapboxAccessToken={MAPBOX_TOKEN}
+                        > */}
+                            {/* {shops.map((shop) => (
+                                <div key={shop.id}>
+                                    <Marker 
+                                    latitude = {shop.latitude}
+                                    longitude = {shop.longitude}
+                                    color = "red"
+                                    />
+                                </div>
+                            ))} */}
+                            {/* {shops.map((shop) => (
+                                <div key ={shop.id}>
+                                    <Marker latitude ={shop.latitude}
+                                    longitude = {shop.longitude}
+                                    color = "blue" />
+                                </div>
+                            ))} */}
+                            
+                    {/* </Map> */}
                     <Map
                         // initialViewState={{
                         // longitude: -122.4,

@@ -49,12 +49,12 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
 
   const comment = comments.map((com) => (
     com.user.id === user.id ?
-    <ul>
+    <ul key={com.id}>
     <li>
-       {com.comment} {com.created_at} {com.user.username} <button onClick={() => onDeleteComment(com.id)}>delete</button>
+   {com.comment} {com.created_at} {com.user.username} <button onClick={() => onDeleteComment(com.id)}>delete</button>
     </li>
     </ul>
-    : <ul>
+    : <ul key={com.id}>
     <li>
        {com.comment} {com.created_at} {com.user.username}
     </li>
@@ -138,7 +138,7 @@ function likeClick(){
 // } 
 
 
-if (user.username === "Admin")
+if (user.admin === true)
 return(
   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />

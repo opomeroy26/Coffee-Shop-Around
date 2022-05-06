@@ -1,5 +1,5 @@
 class BookmarksController < ApplicationController
-    skip_before_action :authorize 
+    # skip_before_action :authorize 
     # works once app is running, but when i restart server something breaks and i need to recomment it in ^
 
     def index 

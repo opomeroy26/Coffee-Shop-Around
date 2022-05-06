@@ -14,19 +14,25 @@ import AddShop from './AddShop';
 
 
 function App() {
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState(null)
   const [shops, setShops] = useState([])
   const [comments, setComments] = useState([])
   const [bookmarked, setBookmarked] = useState([])
   const [filterBy, setFilterBy] = useState("All")
   const [likes, setLikes] = useState()
 
+
+
   //Fetch All Shops 
  useEffect(() => {
   fetch("/shops")
-  .then(resp => resp.json())
-  .then(shops => setShops(shops))
+  .then(resp => {
+    if(resp.ok){
+      resp.json().then(shops => setShops(shops))
+}
+ });
 },[comments, likes])
+
 
 //Fetch All Comments 
 useEffect(() => {
@@ -98,10 +104,8 @@ function handleUpdateLikes(updatedLikes) {
   setShops(updatedShopLike)
 }
 
-
 //Filtering Shops 
-const filteredShops = shops
-.filter((shop) => {
+const filteredShops = shops?.filter((shop) => {
   if (filterBy === "All") {
     return shop
   } else if (filterBy === "Wifi") {
@@ -132,7 +136,8 @@ const filteredShops = shops
 
  if (!user) return <LogIn setUser = {setUser} />
 
- if (user.username === "Admin")
+//  if (user.username === "Admin")
+ if (user.admin === true)
  return (
   <div className="App">
   <Header 

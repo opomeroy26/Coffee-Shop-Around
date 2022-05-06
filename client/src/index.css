@@ -29,11 +29,13 @@ code {
 
 #shop_container{
   margin-top: 90px;
+  margin-left: 0px;
   /* position: relative; */
 }
 
 #containter{
   margin-top: 500px;
+  margin-left: 5px;
 }
 
 #header{
@@ -47,4 +49,9 @@ code {
 }
 #newItemForm{
   margin-top: 100px
+}
+
+#like_button{
+  background-color: white;
+  border: none;
 }

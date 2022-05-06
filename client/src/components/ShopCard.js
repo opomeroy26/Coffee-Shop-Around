@@ -120,25 +120,10 @@ function likeClick(){
   })
   .then(resp => resp.json())
   .then((updatedlikes) => setLikes(updatedlikes))
-  // .then((updatedlikes) => onUpdateLikes(updatedlikes))
 } 
 
-// function likeClick(){
-//   shop.likes += 1
-//   fetch(`/shops/${shop.id}`, {
-//     method: "PATCH",
-//     headers: {
-//       "Content-Type":"application/json"
-//     },
-//     body: JSON.stringify(likes)
-//   })
-//   .then(resp => resp.json())
-//   // .then((updatedlikes) => setLikes(updatedlikes))
-//   .then((updatedlikes) => onUpdateLikes(updatedlikes))
-// } 
-
-
 if (user.admin === true)
+
 return(
   <Card style={{ width: '18rem' }}>
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
@@ -170,44 +155,77 @@ return(
     </form>
     <button onClick={() => onDeleteShop(shop)}>Delete Shop</button>
   </Card.Body>
-
-
 </Card>
 )
 
-    return(
-  <Card style={{ width: '18rem' }}>
-  <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+  return(
+
+    <Card style={{ width: '18rem' }}>
+    <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
   
-  <Card.Body>
-    <Card.Title>{shop.name}</Card.Title>
-    <Card.Text>
-     {shop.pricing}
-     <br></br>
-     Wifi: {shop.wifi ? "Yes" : "No"}
-      {/* Rating: {shop.rating} / 10 */}
-     <br></br>
-     Liked by: {shop.likes} people
-     <button onClick={()=>likeClick(shop)}>♡</button>
-    </Card.Text>
-    <Button variant="secondary">Open Comments</Button>
-    <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
-    {/* <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button> */}
-    <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
-    {comment} 
-    <form id='form' onSubmit={handleCommentSubmit}>
-      <label> Comment: </label>
-        <input 
-          type="text" 
-          name="comment"
-          placeholder = 'Write a comment'
-          value={form.comment} 
-          onChange={handleChange} />
-        {/* <button type="submit">Post</button> */}
-      <input type="submit" value="Submit" />
-    </form>
-  </Card.Body>
-</Card>
+    <Card.Body>
+      <Card.Title>{shop.name}</Card.Title>
+      <Card.Text>
+       {shop.pricing}
+       <br></br>
+      {shop.wifi ? "Has" : "No"} wifi
+       {/* </br> Rating: {shop.rating} / 10 */}
+       <br></br>
+       Liked by: {shop.likes} people
+       <Button variant="primary" onClick={()=>likeClick(shop)}>♡</Button>
+      </Card.Text>
+      <Button variant="secondary">Open Comments</Button>
+      <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
+      <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
+      {comment} 
+  
+      <form id='form' onSubmit={handleCommentSubmit}>
+        <label> Comment: </label>
+          <input 
+            type="text" 
+            name="comment"
+            placeholder = 'Write a comment'
+            value={form.comment} 
+            onChange={handleChange} />
+          {/* <button type="submit">Post</button> */}
+        <input type="submit" value="Submit" />
+      </form>
+    </Card.Body>
+  </Card>
+  
+  //   <Card style={{ width: '25rem'}}>
+  //   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+    
+  //   <Card.Body>
+  //     <Card.Title>{shop.name}</Card.Title>
+  //     <Card.Text>
+  //     {shop.pricing}
+  //     <br></br>
+  //     Wifi: {shop.wifi ? "Yes" : "No"}
+  //       {/* Rating: {shop.rating} / 10 */}
+  //     <br></br>
+  //     Liked by: {shop.likes} people
+  //     <Button variant="primary" onClick={()=>likeClick(shop)}>♡</Button>
+  //     <button onClick={()=> console.log("clicked")}>like</button>
+  //     </Card.Text>
+  //     <Button variant="secondary">Open Comments</Button>
+  //     <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
+  //     {/* <Button variant="primary" onClick={()=> onBookmarkClick(shop)}>{bookmarkObj  ? "In Bookmarks" : "Bookmark"}</Button> */}
+  //     <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
+  //     {comment} 
+  //     <form id='form' onSubmit={handleCommentSubmit}>
+  //       <label> Comment: </label>
+  //         <input 
+  //           type="text" 
+  //           name="comment"
+  //           placeholder = 'Write a comment'
+  //           value={form.comment} 
+  //           onChange={handleChange} />
+  //         {/* <button type="submit">Post</button> */}
+  //       <input type="submit" value="Submit" />
+  //     </form>
+  //   </Card.Body>
+  // </Card>
     )
 }
 

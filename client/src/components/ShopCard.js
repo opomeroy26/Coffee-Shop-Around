@@ -133,7 +133,7 @@ return(
     <Card.Text>
      {shop.pricing}
      <br></br>
-
+     {shop.wifi ? "Has" : "No"} wifi
      {/* </br> Rating: {shop.rating} / 10 */}
      <br></br>
      Liked by: {shop.likes} people
@@ -192,7 +192,7 @@ return(
       </form>
     </Card.Body>
   </Card>
-  
+
   //   <Card style={{ width: '25rem'}}>
   //   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
     

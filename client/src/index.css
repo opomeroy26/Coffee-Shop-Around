@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* a {
+  text-decoration: none;
+  color: black;
+
+} */
+
+
+#map{
+  position: fixed;
+  margin: flex;
+  /* position: relative; */
+  margin-left: 250px;
+  margin-top: 50px;
+}
+
+#shop_container{
+  margin-top: 90px;
+  /* position: relative; */
+}
+
+#containter{
+  margin-top: 500px;
+}
+
+#header{
+  position: fixed;
+  background-color: blue;
+  /* margin-bottom: 100px; */
+}
+
+.row{
+  margin-top: 100px;
+}
+#newItemForm{
+  margin-top: 100px
+}

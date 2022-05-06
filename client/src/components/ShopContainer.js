@@ -54,39 +54,13 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
 
 
     return(
-        <div>
-             <Container>
-                <Row>
-                    {/* <Map
-                     initialViewState={{
-                        longitude: -122.4,
-                        latitude: 37.8,
-                        zoom: 11,
-                        }}
-                        // style={{width: 600, height: 400}}
-                        onMove={evt => setViewState(evt.viewState)}
-                        style = {{width:1150, height: 500 }}
-                        mapStyle="mapbox://styles/mapbox/streets-v9"
-                        mapboxAccessToken={MAPBOX_TOKEN}
-                        > */}
-                            {/* {shops.map((shop) => (
-                                <div key={shop.id}>
-                                    <Marker 
-                                    latitude = {shop.latitude}
-                                    longitude = {shop.longitude}
-                                    color = "red"
-                                    />
-                                </div>
-                            ))} */}
-                            {/* {shops.map((shop) => (
-                                <div key ={shop.id}>
-                                    <Marker latitude ={shop.latitude}
-                                    longitude = {shop.longitude}
-                                    color = "blue" />
-                                </div>
-                            ))} */}
-                            
-                    {/* </Map> */}
+        <div id = "container">
+             <Container id = "container">
+                <Row>  
+                <Col  id="shop_container">
+                     {shop}
+                </Col>
+                    <Col id="map">        
                     <Map
                         // initialViewState={{
                         // longitude: -122.4,
@@ -97,7 +71,9 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
                         {...viewState}
                         // style={{width: 600, height: 400}}
                         onMove={evt => setViewState(evt.viewState)}
-                        style = {{width:1150, height: 500 }}
+                        // style = {{width:1150, height: 500 }}
+                        style = {{width: 850, height: 800}}
+                        id ="map"
                         mapStyle="mapbox://styles/mapbox/streets-v9"
                         mapboxAccessToken={MAPBOX_TOKEN}
                     >
@@ -124,9 +100,7 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
                         ))}
                             
                     </Map>
-                </Row>
-                <Row> 
-                     {shop}
+                    </Col>
                 </Row>
             </Container>
         </div>

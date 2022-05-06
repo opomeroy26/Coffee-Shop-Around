@@ -7,6 +7,7 @@ import ShopContainer from './ShopContainer';
 import Profile from './Profile';
 import Bookmarked from './Bookmarked';
 import AddShop from './AddShop';
+import { Row } from 'react-bootstrap';
 // import Map from 'react-map-gl'; 
 // import 'mapbox-gl/dist/mapbox-gl.css';
 

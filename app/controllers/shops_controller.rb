@@ -35,6 +35,12 @@ class ShopsController < ApplicationController
         render json: shop, status: :created 
     end
 
+    def decrement_likes 
+        shop = Shop.find_by(id: params[:id])
+        shop.update!(likes: shop.likes - 1)
+        render json: shop, status: :created 
+    end
+
     private 
     
     def shop_params

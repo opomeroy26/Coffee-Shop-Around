@@ -11,7 +11,7 @@ import "../App.css";
 // const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YXU0MGQwMWNyM2NvMnprZ3htNGY3In0.kHGzJWzWycU6Ybvhzdu2zw'
 
 
-function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, onUpdateLikes, likes, setLikes }) {
+function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, onUpdateLikes, likes, setLikes, bookmarkBtn, onDecreaseLikes}) {
     const [showPopup, setShowPopup] = useState({0: false,});
 
     const initialViewState = {
@@ -49,6 +49,8 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
             likes = {likes}
             setLikes = {setLikes}
             onSeeMapClick = {handleSeeMapClick}
+            bookmarkBtn = {bookmarkBtn}
+            onDecreaseLikes = {onDecreaseLikes}
         />
     ) )
 
@@ -60,7 +62,8 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
                 <Col  id="shop_container">
                      {shop}
                 </Col>
-                    <Col id="map">        
+                    <Col id="map">  
+                    <button onClick={()=> setViewState(initialViewState)}>return to overview</button>      
                     <Map
                         // initialViewState={{
                         // longitude: -122.4,
@@ -70,6 +73,7 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
                         // initialViewState = {{...viewState}}
                         {...viewState}
                         // style={{width: 600, height: 400}}
+                        
                         onMove={evt => setViewState(evt.viewState)}
                         // style = {{width:1150, height: 500 }}
                         style = {{width: 850, height: 800}}

@@ -2,41 +2,24 @@ import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import { useHistory } from "react-router-dom";
+import images from "../Images";
+import {BsBookmark, BsFillBookmarkFill, BsHeart, BsFillPinMapFill, BsTrash} from "react-icons/bs";
 // import Map, {Marker, Popup} from 'react-map-gl'; 
 // import 'mapbox-gl/dist/mapbox-gl.css';
 
 // const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick}) {
-  // const [newComment, setNewComment] = useState("")
-  // const b = bookmarked.map((bookmark) => (bookmark.shop))
-  // console.log(b)
-  // console.log(b.some(shop))
-  // console.log(b.includes(shop))
-  // console.log(shops.includes(bookmarked))
-
-  // const history = useHistory()
-
-
-
-  // const bookmarkObj = bookmarked.some(bookmarked => { 
-  //   if (bookmarked.shop.id === shop.id) {
-  //     return true;
-  //   }
-  //   return false;
-  // });
-  // console.log(bookobj)
-//   const [viewState, setViewState] = useState({
-//     longitude: -122.4,
-//     latitude: 37.8,
-//     zoom: 11,
-// })
-
-
-  
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick, bookmarkBtn, onDecreaseLikes}) {
+  const b = bookmarked.map((bookmark) => (bookmark.shop))
+  const bb = b.map((b) => b.id)
   const comments = shop.comments
+
   const current = new Date();
-  const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
+  const date = (`${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`);
+  const [showComments, setShowComments] = useState(false)
+
+  // const [bookmarkedBtn, setBookmarkedBtn] = useState(false)
   // const [likes, setLikes] = useState()
   
   // const commentors = comments.user
@@ -46,18 +29,51 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   // function deleteComment(){
   //   onDeleteComment(comment)
   // }
+  const c = comments.map((com) => (
+    com)
+)
+
+const stringDate = (c.toString())
+
+const todayComment = comments.map((com) => com.postdate)
+// console.log(todayComment.toString())
+// console.log(date)
+// console.log(todayComment.toString().getDay === date.getDay)
+// const dates = whereDate('created_at', '=', date('Y-m-d'))
+
+
+// console.log(c.postdate === date)
+// console.log(c)
+
+// console.log(c.created_at)
+// console.log(postdate)
+// console.log(date)
+const day = date.getDay
+// console.log(date)
+// console.log(postedDate)
+// console.log(date.toString() === c.toString())
+
+
+// console.log(typeof created_at)
+
+  // const com = c.where(c.created_at === date)
+  // console.log(com)
+
 
   const comment = comments.map((com) => (
     com.user.id === user.id ?
     <ul key={com.id}>
-    <li>
-   {com.comment} {com.created_at} {com.user.username} <button onClick={() => onDeleteComment(com.id)}>delete</button>
-    </li>
+    {/* <li> */}
+      <div>
+      <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate}
+      {com.created_at.toString()}
+    </div>
+    {/* </li> */}
     </ul>
     : <ul key={com.id}>
-    <li>
-       {com.comment} {com.created_at} {com.user.username}
-    </li>
+    {/* <li> */}
+    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate}
+    {/* </li> */}
     </ul>
     ))
 
@@ -110,7 +126,34 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   .then(setForm(initialFormState))
 }
 
+function handleOpenComments(){
+  // console.log(showComments)
+  setShowComments(true)
+}
+
+function handlecloseComments(){
+  setShowComments(false)
+}
+
+const commentsShowing = showComments ? <div>
+  {comment} 
+  <form id='form' onSubmit={handleCommentSubmit}>
+        <label> Comment: </label>
+          <input 
+            type="text" 
+            name="comment"
+            placeholder = 'Write a comment'
+            value={form.comment} 
+            onChange={handleChange} />
+          {/* <button type="submit">Post</button> */}
+        <input type="submit" value="Submit" />
+      </form>
+  </div>: null
+
+
 function likeClick(){
+  // e.stopPropogation();
+
   fetch(`/shops/${shop.id}/likes`, {
     method: "PATCH",
     headers: {
@@ -122,10 +165,14 @@ function likeClick(){
   .then((updatedlikes) => setLikes(updatedlikes))
 } 
 
+function UnlikeClick(){
+  console.log("de liking")
+}
+
 if (user.admin === true)
 
 return(
-  <Card style={{ width: '18rem' }}>
+  <Card style={{ width: '18rem' }} >
   <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
 
   <Card.Body>
@@ -141,6 +188,7 @@ return(
     <Button variant="secondary">Open Comments</Button>
     <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
     {comment} 
+   
 
     <form id='form' onSubmit={handleCommentSubmit}>
       <label> Comment: </label>
@@ -160,9 +208,8 @@ return(
 
   return(
 
-    <Card style={{ width: '18rem' }}>
-    <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
-  
+    <Card style={{ width: '22rem' }} id= "shop_card">
+    <Card.Img variant="top" src={"https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg"} />
     <Card.Body>
       <Card.Title>{shop.name}</Card.Title>
       <Card.Text>
@@ -171,26 +218,32 @@ return(
       {shop.wifi ? "Has" : "No"} wifi
        {/* </br> Rating: {shop.rating} / 10 */}
        <br></br>
-       Liked by: {shop.likes} people
-       <Button variant="primary" onClick={()=>likeClick(shop)}>♡</Button>
+       {shop.likes} people like this shop
+       <br></br>
+       <Button id="icons" onClick={()=>likeClick(shop)}><BsHeart/></Button>
+       <Button id="icons" onClick={()=> onBookmarkClick(shop)}>{bb.includes(shop.id) ? <BsFillBookmarkFill/> : <BsBookmark/>} </Button>
+       <Button id ="icons" onClick={() => onSeeMapClick(shop)}><BsFillPinMapFill/></Button>
       </Card.Text>
-      <Button variant="secondary">Open Comments</Button>
-      <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
-      <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button>
-      {comment} 
+      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : "Open Comments"}</Button>
+      {/* <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
+      <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button> */}
+
+      {/* {comment}  */}
+      {commentsShowing}
+      </Card.Body>
   
-      <form id='form' onSubmit={handleCommentSubmit}>
-        <label> Comment: </label>
+      {/* <form id='form' onSubmit={handleCommentSubmit}> */}
+        {/* <label> Comment: </label>
           <input 
             type="text" 
             name="comment"
             placeholder = 'Write a comment'
             value={form.comment} 
             onChange={handleChange} />
-          {/* <button type="submit">Post</button> */}
-        <input type="submit" value="Submit" />
-      </form>
-    </Card.Body>
+          <button type="submit">Post</button>
+        <input type="submit" value="Submit" /> */}
+      {/* </form> */}
+    {/* </Card.Body> */}
   </Card>
 
   //   <Card style={{ width: '25rem'}}>

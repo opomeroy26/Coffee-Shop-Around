@@ -21,6 +21,7 @@ function App() {
   const [bookmarked, setBookmarked] = useState([])
   const [filterBy, setFilterBy] = useState("All")
   const [likes, setLikes] = useState()
+  const [bookmarkBtn, setBookmarkBtn] = useState(true)
 
 
 
@@ -42,6 +43,8 @@ useEffect(() => {
   .then((comment) => setComments(comment))
 },[] )
 
+console.log(comments)
+
 //Fetch Bookmarked
 useEffect(() => {
   fetch("/bookmarks")
@@ -51,6 +54,7 @@ useEffect(() => {
 
 
 function handleBookmarkClick(shop){
+  // const newBookmarked = bookmarked.filter(bookmarkID => bookmarkID !== shop)
   fetch('/bookmarks', {
     method:"POST",
     headers: {
@@ -64,9 +68,16 @@ function handleBookmarkClick(shop){
   })
   .then((resp) => resp.json())
   .then((data) => setBookmarked([...bookmarked, data]))
-  // .then((data) => setBookmarked(bookmarked.filter((data) => data !== shop)))
+  // .then((data) => setBookmarked(newBookmarked))
 
+  // .then((data) => bookmarked.includes(data) ? setBookmarked([...bookmarked]) : setBookmarked([...bookmarked, data]))
+  // .then((data) => {if (!bookmarked.includes(data)) {setBookmarked([...bookmarked, data])}})
+  // .then((data) => {if (!bookmarked.includes(data)) {setBookmarked([...bookmarked, data])}}
+  // .then((data) => setBookmarked(bookmarked.filter((item) => item !== data)))
+  // .then(setBookmarkBtn(false))
+  // .then((data) => setBookmarked(bookmarked.filter((data) => data !== shop)))
 }
+// console.log(bookmarkBtn)
 
 function handleRemoveBookmarkClick(bookmark){
   fetch(`/bookmarks/${bookmark.id}`, {method: "DELETE"})
@@ -103,6 +114,10 @@ function handleUpdateLikes(updatedLikes) {
     }
   })
   setShops(updatedShopLike)
+}
+
+function handleDecreaseLikes(updatedLikes) {
+  console.log(updatedLikes)
 }
 
 //Filtering Shops 
@@ -214,6 +229,8 @@ const filteredShops = shops?.filter((shop) => {
             onUpdateLikes = {handleUpdateLikes}
             likes = {likes}
             setLikes = {setLikes}
+            bookmarkBtn = {bookmarkBtn}
+            onDecreaseLikes = {handleDecreaseLikes}
             />
         </Route>
         <Route exact path='/profile'>

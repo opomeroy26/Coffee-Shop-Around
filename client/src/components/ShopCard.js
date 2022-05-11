@@ -19,60 +19,19 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   const date = (`${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`);
   const [showComments, setShowComments] = useState(false)
 
-  // const [bookmarkedBtn, setBookmarkedBtn] = useState(false)
-  // const [likes, setLikes] = useState()
-  
-  // const commentors = comments.user
-  // const commentor = commentors.
-  // console.log(comments)
-
-  // function deleteComment(){
-  //   onDeleteComment(comment)
-  // }
-  const c = comments.map((com) => (
-    com)
-)
-
-const stringDate = (c.toString())
-
-const todayComment = comments.map((com) => com.postdate)
-// console.log(todayComment.toString())
-// console.log(date)
-// console.log(todayComment.toString().getDay === date.getDay)
-// const dates = whereDate('created_at', '=', date('Y-m-d'))
-
-
-// console.log(c.postdate === date)
-// console.log(c)
-
-// console.log(c.created_at)
-// console.log(postdate)
-// console.log(date)
-const day = date.getDay
-// console.log(date)
-// console.log(postedDate)
-// console.log(date.toString() === c.toString())
-
-
-// console.log(typeof created_at)
-
-  // const com = c.where(c.created_at === date)
-  // console.log(com)
-
-
   const comment = comments.map((com) => (
     com.user.id === user.id ?
     <ul key={com.id}>
     {/* <li> */}
       <div>
-      <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate}
+      <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate.toString()}
       {com.created_at.toString()}
     </div>
     {/* </li> */}
     </ul>
     : <ul key={com.id}>
     {/* <li> */}
-    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate}
+    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.created_at}
     {/* </li> */}
     </ul>
     ))
@@ -224,7 +183,7 @@ return(
        <Button id="icons" onClick={()=> onBookmarkClick(shop)}>{bb.includes(shop.id) ? <BsFillBookmarkFill/> : <BsBookmark/>} </Button>
        <Button id ="icons" onClick={() => onSeeMapClick(shop)}><BsFillPinMapFill/></Button>
       </Card.Text>
-      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : "Open Comments"}</Button>
+      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : `Open Comments(${comments.length})`}</Button>
       {/* <Button variant="primary" onClick={() => onSeeMapClick(shop)}>SEE ON MAP</Button>
       <Button onClick={()=> onBookmarkClick(shop)}>Bookmark</Button> */}
 

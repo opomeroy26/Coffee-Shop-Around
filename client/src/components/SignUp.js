@@ -41,6 +41,7 @@ export default function SignUp( {setUser}) {
             if (r.ok) {
                 r.json().then((user)=> setUser(user));
                 history.push("/")
+                // window.location.reload(true);
             } else {
                 r.json().then(err => window.alert(err.errors))
             }

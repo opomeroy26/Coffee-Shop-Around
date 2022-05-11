@@ -1,11 +1,7 @@
 import React, {useState} from "react";
-import Header from "./Header";
 import { Row, Container, Col } from "react-bootstrap";
-import EditIcon from '@mui/icons-material/Edit';
 import { Button, Tooltip, IconButton } from '@mui/material';
-import Bookmarked from "./Bookmarked";
 import BookmarkCard from "./BookmarkCard";
-import Map, {Marker, Popup} from 'react-map-gl'; 
 import 'mapbox-gl/dist/mapbox-gl.css';
 import { Card } from "react-bootstrap";
 
@@ -29,20 +25,19 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         />
     ))
 
-    const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
 
 
-    function handleSeeForm(){
-        setSeeEditForm(true)
-        setSeeBookmark(false)
-        setSeeYourComments(false)
-    }
+    // function handleSeeForm(){
+    //     setSeeEditForm(true)
+    //     setSeeBookmark(false)
+    //     setSeeYourComments(false)
+    // }
 
-    function handleSeeYourComments(){
-        setSeeEditForm(false)
-        setSeeYourComments(true)
-        setSeeBookmark(false)
-    }
+    // function handleSeeYourComments(){
+    //     setSeeEditForm(false)
+    //     setSeeYourComments(true)
+    //     setSeeBookmark(false)
+    // }
 
     function handleSeeBookmark(){
         setSeeBookmark(true)
@@ -64,9 +59,9 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </Tooltip>
         </Col>
         </Container>
-        <Button onClick={()=> setSeeBookmark(false)}>{bookmarks.length} Bookmarked Items</Button>
+        <Button onClick={()=> setSeeBookmark(false)}> Bookmarked Items</Button>
         {/* <Button onClick={()=> handleSeeYourComments()}>See Comments</Button> */}
-        <Button onClick={()=> handleSeeForm()}>Edit Profile</Button>
+        {/* <Button onClick={()=> handleSeeForm()}>Edit Profile</Button> */}
         
 
     <div id ="bookmark">
@@ -92,9 +87,9 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </Tooltip>
         </Col>
         </Container>
-        <Button onClick={()=>handleSeeBookmark()}>{bookmarks.length} Bookmarked Items</Button>
+        <Button onClick={()=>handleSeeBookmark()}>Bookmarked Items</Button>
         {/* <Button onClick={()=> handleSeeYourComments()}>See Comments</Button> */}
-        <Button onClick={()=> setSeeEditForm(false)}>Edit Profile</Button>
+        {/* <Button onClick={()=> setSeeEditForm(false)}>Edit Profile</Button> */}
 
         <div id ="bookmark">
         <Container>
@@ -120,9 +115,9 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
     </Tooltip>
     </Col>
     </Container>
-    <Button onClick={()=> setSeeBookmark(true)}>{bookmarks.length} Bookmarked Items</Button>
+    <Button onClick={()=> setSeeBookmark(true)}>Bookmarked Items</Button>
     {/* <Button onClick={()=> setSeeYourComments(false)}>See Comments</Button> */}
-    <Button onClick={()=> handleSeeForm()}>Edit Profile</Button>
+    {/* <Button onClick={()=> handleSeeForm()}>Edit Profile</Button> */}
 
     <div id ="bookmark">
     <Container>
@@ -147,9 +142,9 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </IconButton>
         </Tooltip>
         </Container>
-        <Button onClick={()=> setSeeBookmark(true)}>{bookmarks.length} Bookmarked Items</Button> 
+        <Button onClick={()=> setSeeBookmark(true)}> Bookmarked Items</Button> 
         {/* <Button onClick={()=> setSeeYourComments(true)}>See Comments</Button> */}
-        <Button onClick={()=> setSeeEditForm(true)}>Edit Profile</Button>
+        {/* <Button onClick={()=> setSeeEditForm(true)}>Edit Profile</Button> */}
         </div>
     )
 }

@@ -5,13 +5,7 @@ import Header from './Header';
 import LogIn from './LogIn';
 import ShopContainer from './ShopContainer';
 import Profile from './Profile';
-import Bookmarked from './Bookmarked';
 import AddShop from './AddShop';
-import { Row } from 'react-bootstrap';
-// import Map from 'react-map-gl'; 
-// import 'mapbox-gl/dist/mapbox-gl.css';
-
-// const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
 
 
 function App() {
@@ -21,7 +15,7 @@ function App() {
   const [bookmarked, setBookmarked] = useState([])
   const [filterBy, setFilterBy] = useState("All")
   const [likes, setLikes] = useState()
-  const [bookmarkBtn, setBookmarkBtn] = useState(true)
+  // const [bookmarkBtn, setBookmarkBtn] = useState(true)
   const initialViewState = {
     longitude: -122.45081176757787,
     latitude: 37.74653886603073,
@@ -43,14 +37,13 @@ const [viewState, setViewState] = useState(initialViewState)
 },[comments, likes])
 
 
-
-
 //Fetch All Comments 
 useEffect(() => {
   fetch("/comments")
   .then((resp) => resp.json())
   .then((comment) => setComments(comment))
 },[] )
+
 
 //Fetch Bookmarked
 useEffect(() => {
@@ -75,16 +68,8 @@ function handleBookmarkClick(shop){
   })
   .then((resp) => resp.json())
   .then((data) => setBookmarked([...bookmarked, data]))
-  // .then((data) => setBookmarked(newBookmarked))
-
-  // .then((data) => bookmarked.includes(data) ? setBookmarked([...bookmarked]) : setBookmarked([...bookmarked, data]))
-  // .then((data) => {if (!bookmarked.includes(data)) {setBookmarked([...bookmarked, data])}})
-  // .then((data) => {if (!bookmarked.includes(data)) {setBookmarked([...bookmarked, data])}}
-  // .then((data) => setBookmarked(bookmarked.filter((item) => item !== data)))
-  // .then(setBookmarkBtn(false))
-  // .then((data) => setBookmarked(bookmarked.filter((data) => data !== shop)))
 }
-// console.log(bookmarkBtn)
+
 
 function handleRemoveBookmarkClick(bookmark){
   fetch(`/bookmarks/${bookmark.id}`, {method: "DELETE"})
@@ -128,26 +113,6 @@ function handleDecreaseLikes(updatedLikes) {
 }
 
 // Filtering Shops 
-// const filteredShops = shops.filter((shop) => {
-//   if (filterBy === "All") {
-//     return shop
-//   } else if (filterBy === "Wifi") {
-//     return (shop.wifi === true) 
-//   } else {
-//     return shop
-//   }
-// })
-// .sort((shop1, shop2) => {
-//   if (filterBy === "Price") {
-//     return (shop1.pricing.localeCompare(shop2.pricing))
-//    } else if (filterBy === "Most Liked") {
-//      return (shop2.likes - shop1.likes)
-//    } else {
-//       return shop1.id - shop2.id
-//     }
-//   }
-// )
-
 function filteredShops() {
   if (Array.isArray(shops)) 
   {
@@ -220,7 +185,7 @@ function filteredShops() {
             onUpdateLikes = {handleUpdateLikes}
             likes = {likes}
             setLikes = {setLikes}
-            bookmarkBtn = {bookmarkBtn}
+            // bookmarkBtn = {bookmarkBtn}
             onDecreaseLikes = {handleDecreaseLikes}
             viewState={viewState}
             setViewState={setViewState}
@@ -263,7 +228,6 @@ function filteredShops() {
             onUpdateLikes = {handleUpdateLikes}
             likes = {likes}
             setLikes = {setLikes}
-            bookmarkBtn = {bookmarkBtn}
             onDecreaseLikes = {handleDecreaseLikes}
             viewState={viewState}
             setViewState={setViewState}
@@ -277,13 +241,6 @@ function filteredShops() {
             comments = {comments}
             onRemoveBookmark = {handleRemoveBookmarkClick}/>
         </Route>
-        {/* <Route exact path='/bookmarked'>
-          <Bookmarked
-          shops = {shops}
-          bookmarked = {bookmarked}
-          user={user}
-          onRemoveBookmark = {handleRemoveBookmarkClick}/>
-        </Route> */}
       </Switch>
     </div>
   );

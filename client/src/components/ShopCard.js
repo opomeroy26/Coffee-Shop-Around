@@ -1,29 +1,43 @@
 import React, {useState} from "react";
 import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import dayjs from 'dayjs';
 import {BsBookmark, BsFillBookmarkFill, BsHeart, BsFillPinMapFill, BsTrash, BsFillTrashFill} from "react-icons/bs";
+import Expire from "./Expire";
 
 
-function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick, bookmarkBtn, onDecreaseLikes}) {
+function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick, comments, bookmarkBtn, onDecreaseLikes}) {
   const b = bookmarked.map((bookmark) => (bookmark.shop))
   const bb = b.map((b) => b.id)
-  const comments = shop.comments
+  const shopcomments = shop.comments
+  const dayjs = require('dayjs')
 
   const current = new Date();
   // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const date = (`${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`);
   const [showComments, setShowComments] = useState(false)
 
-  const comment = comments.map((com) => (
-    com.user.id === user.id ?
+  const c = shopcomments.map((com) => com.created_at)
+  // console.log(comments)
+
+  // const c = comments.map((com) => com.shop)
+  // console.log(c)
+
+  const dates = (dayjs(c).format('MM/DD/YYYY @ H:mm'))
+
+  const comment = shopcomments.map((com) => (
+
+    com.user.id === user.id  ?
     <ul key={com.id}>
       <div>
-      <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.postdate.toString()}
-      {com.created_at.toString()}
+        {/* <Expire delay='8000' > */}
+      <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h>
+      {/* {com.created_at.toString()} */}  <h id="dates">(Posted on {dates})</h>
+      {/* </Expire> */}
     </div>
     </ul>
     : <ul key={com.id}>
-    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> {com.created_at}
+    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> <h id="dates">(Posted on {dates})</h>
     </ul>
     ))
 
@@ -42,6 +56,8 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
     const {name, value} = event.target;
     setForm(form => ({...form, [name]: value}))
   }
+
+
 
   function handleCommentSubmit(e) {
     e.preventDefault()
@@ -122,7 +138,7 @@ return(
        <Button id ="icons" onClick={() => onSeeMapClick(shop)}><BsFillPinMapFill/></Button>
        <Button id="icons" onClick={() => onDeleteShop(shop)}><BsFillTrashFill/></Button>
       </Card.Text>
-      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : `Open Comments(${comments.length})`}</Button>
+      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : `Open Comments(${shopcomments.length})`}</Button>
       
       {commentsShowing}
       </Card.Body>
@@ -148,7 +164,7 @@ return(
        <Button id="icons" onClick={()=> onBookmarkClick(shop)}><BsBookmark/></Button>
        <Button id ="icons" onClick={() => onSeeMapClick(shop)}><BsFillPinMapFill/></Button>
       </Card.Text>
-      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : `Open Comments(${comments.length})`}</Button>
+      <Button variant="secondary" id="commentsbtn" onClick={showComments ? ()=> handlecloseComments() : ()=> handleOpenComments(shop)}>{showComments ? "Close Comments" : `Open Comments(${shopcomments.length})`}</Button>
     
       {commentsShowing}
       </Card.Body>

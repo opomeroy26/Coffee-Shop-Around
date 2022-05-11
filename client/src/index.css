@@ -268,3 +268,8 @@ code {
   background-color: white;
   padding: 5rem;
 }
+
+#dates{
+  color: rgb(160, 155, 155);
+  font-size: x-small;
+}

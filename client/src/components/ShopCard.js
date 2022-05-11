@@ -8,37 +8,37 @@ import {BsBookmark, BsFillBookmarkFill, BsHeart, BsFillPinMapFill, BsTrash, BsFi
 
 function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick, comments, bookmarkBtn, onDecreaseLikes}) {
   const b = bookmarked.map((bookmark) => (bookmark.shop))
-  const bb = b.map((b) => b.id)
+  // const bb = b.map((b) => b.id)
   const shopcomments = shop.comments
-  // const dayjs = require('dayjs')
+  const dayjs = require('dayjs')
 
   const current = new Date();
   // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
   const date = (`${current.getFullYear()}-${current.getMonth()+1}-${current.getDate()}`);
   const [showComments, setShowComments] = useState(false)
 
-  const c = shopcomments.map((com) => com.created_at)
+  // const c = shopcomments.map((com) => com.created_at)
   // console.log(comments)
 
-  // const c = comments.map((com) => com.shop)
+  // const c = comments.map((com) => com.shop.comments)
   // console.log(c)
 
-  // const dates = (dayjs(c).format('MM/DD/YYYY @ H:mm'))
+  // const dates = (dayjs(c).format('H:mm a '))
+
 
   const comment = shopcomments.map((com) => (
 
     com.user.id === user.id   ?
     <ul key={com.id}>
       <div>
-        {/* <Expire delay='8000' > */}
       <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h>
-      {/* {com.created_at.toString()}  <h id="dates">(Posted on {dates})</h> */}
-      {/* </Expire> */}
+      {/* {com.created_at.toString()}   */}
+      <h id="dates"> {dayjs(com.created_at).format('H:mma')}</h>
     </div>
     </ul>
     : <ul key={com.id}>
     <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> 
-    {/* <h id="dates">(Posted on {dates})</h> */}
+    <h id="dates"> {dayjs(com.created_at).format('H:mma')}</h>
     </ul>
     ))
 

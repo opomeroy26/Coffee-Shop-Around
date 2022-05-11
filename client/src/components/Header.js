@@ -47,13 +47,18 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="header">
             <img id="logo" src={require ('../CoffeeShopAround.png')} alt="logo"/>
             <Container>
-                {/* <Navbar.Brand>Coffee Shop Around</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav>
+                <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
+                <Nav.Link id="home" onClick={handleGoHome}>Home</Nav.Link>
+                <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
+                <Nav.Link onClick={handleGoAddShop}>New Shop</Nav.Link>
+            </Nav>
             <Nav className="me-auto">
-                {/* <Nav.Link onClick={handleGoHome}>Home</Nav.Link> */}
-                {/* <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link> */}
-                <Form.Select id="value" aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
+            </Nav>
+            <Nav>
+            <Form.Select id="value" aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
                     <option  value="All">All</option>
                     <option value="Most Liked">Most Liked</option>
                     <option value="Price">Price</option>
@@ -74,13 +79,8 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
                 </Form>
             </Nav>
             <Nav>
-                <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
-                <Nav.Link id="home" onClick={handleGoHome}>Home</Nav.Link>
-                <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
-                <Nav.Link onClick={handleGoAddShop}>New Shop</Nav.Link>
-                <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link>
+                <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link> 
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                {/* <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link> */}
             </Nav>
                 </Navbar.Collapse>
             </Container>
@@ -95,20 +95,24 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
             <Navbar bg="dark" variant="dark" id="header">
             <img id="logo" src={require ('../CoffeeShopAround.png')} alt="logo"/>
             <Container>
-                {/* <Navbar.Brand>Coffee Shop Around</Navbar.Brand> */}
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav>
+                <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
+                <Nav.Link id="homelink" onClick={handleGoHome}>Home</Nav.Link>
+                <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
+            </Nav>
             <Nav className="me-auto">
-                {/* <Nav.Link onClick={handleGoHome}>Home</Nav.Link> */}
-                {/* <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link> */}
-                <Form.Select id="value" aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
+            </Nav>
+            <Nav>
+            <Form.Select id="value" aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
                     <option value="All">All Shops</option>
                     <option value="Most Liked">Most Liked</option>
                     <option value="Price">Price</option>
                     <option value="Wifi">Wifi</option>
                 </Form.Select>
-            </Nav>
-            <Nav>
+                </Nav>
+                <Nav>
         <Form className="d-flex" id="search" onSubmit={handleSearch}>
         <FormControl
           type="search"
@@ -123,12 +127,10 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
       </Form>
         </Nav>
             <Nav>
-                <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
-                <Nav.Link onClick={handleGoHome}>Home</Nav.Link>
-                <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
                 <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             </Nav>
+    
                 </Navbar.Collapse>
             </Container>
             </Navbar>

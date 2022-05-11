@@ -17,8 +17,8 @@ function App() {
   const [likes, setLikes] = useState()
   // const [bookmarkBtn, setBookmarkBtn] = useState(true)
   const initialViewState = {
-    longitude: -122.42299606634,
-    latitude: 37.77770057882813,
+    longitude: -122.44085830928,
+    latitude: 37.75224190341068,
     zoom: 11,
     }
 

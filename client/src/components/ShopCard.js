@@ -3,14 +3,14 @@ import  Card  from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import dayjs from 'dayjs';
 import {BsBookmark, BsFillBookmarkFill, BsHeart, BsFillPinMapFill, BsTrash, BsFillTrashFill} from "react-icons/bs";
-import Expire from "./Expire";
+// import Expire from "./Expire";
 
 
 function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, shops, onUpdateLikes, likes, setLikes, onSeeMapClick, comments, bookmarkBtn, onDecreaseLikes}) {
   const b = bookmarked.map((bookmark) => (bookmark.shop))
   const bb = b.map((b) => b.id)
   const shopcomments = shop.comments
-  const dayjs = require('dayjs')
+  // const dayjs = require('dayjs')
 
   const current = new Date();
   // const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()}`;
@@ -23,7 +23,7 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
   // const c = comments.map((com) => com.shop)
   // console.log(c)
 
-  const dates = (dayjs(c).format('MM/DD/YYYY @ H:mm'))
+  // const dates = (dayjs(c).format('MM/DD/YYYY @ H:mm'))
 
   const comment = shopcomments.map((com) => (
 

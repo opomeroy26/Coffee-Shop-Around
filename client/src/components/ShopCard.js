@@ -27,7 +27,7 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
 
   const comment = shopcomments.map((com) => (
 
-    com.user.id === user.id  ?
+    com.user.id === user.id   ?
     <ul key={com.id}>
       <div>
         {/* <Expire delay='8000' > */}

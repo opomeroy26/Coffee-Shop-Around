@@ -190,58 +190,54 @@ function filteredShops() {
 //  if (user.username === "Admin")
  if (user.admin === true)
  return (
-  <div className="App">
-  <Header 
-    user={user} 
-    setUser={setUser}
-    filterBy = {filterBy}
-    setFilterBy = {setFilterBy}/>
-     {/* <Map
-      initialViewState={{
-        longitude: -122.4,
-        latitude: 37.8,
-        zoom: 14
-      }}
-      style={{width: 600, height: 400}}
-      mapStyle="mapbox://styles/mapbox/streets-v9"
-      mapboxAccessToken={MAPBOX_TOKEN}
-    /> */}
-  <Switch>
-    <Route exact path= "/addShop">
+    <div className="App">
+      <Header 
+        user={user} 
+        setUser={setUser}
+        filterBy = {filterBy}
+        setFilterBy = {setFilterBy} 
+        viewState = {viewState}
+        setViewState = {setViewState}
+        initialViewState = {initialViewState}/>
+      <Switch>
+      <Route exact path= "/addShop">
       <AddShop 
       user ={user}
       onAddNewShop = {handleAddNewShop}/>
     </Route>
-    <Route exact path="/">
-      <ShopContainer
-        shops = {filteredShops}
-        comments = {comments}
-        onBookmarkClick = {handleBookmarkClick}
-        user= {user}
-        onAddToComments = {handleAddToComments}
-        onDeleteShop = {handleDeleteShop}
-        onDeleteComment = {handleDeleteComment}
-        setShops ={setShops}
-        // onLikeClick = {handleLikeClick}
-        />
-    </Route>
-    <Route exact path='/profile'>
-      <Profile
-        user = {user}/>
-    </Route>
-    {/* <Route exact path='/bookmarked'>
-      <Bookmarked
-      bookmarked={bookmarked}
-      shops = {shops}
-      comments = {comments}
-      user = {user}
-      // onRemoveBookmark = {handleRemoveBookmarkClick}
-      />
-    </Route> */}
-
-  </Switch>
-</div>
- )
+        <Route exact path="/">
+          <ShopContainer
+            shops = {filteredShops()}
+            comments = {comments}
+            onBookmarkClick = {handleBookmarkClick}
+            user= {user}
+            onAddToComments = {handleAddToComments}
+            onDeleteComment = {handleDeleteComment}
+            onDeleteShop = {handleDeleteShop}
+            // onLikeClick = {handleLikeClick}
+            bookmarked = {bookmarked}
+            setShops = {setShops}
+            onUpdateLikes = {handleUpdateLikes}
+            likes = {likes}
+            setLikes = {setLikes}
+            bookmarkBtn = {bookmarkBtn}
+            onDecreaseLikes = {handleDecreaseLikes}
+            viewState={viewState}
+            setViewState={setViewState}
+            />
+        </Route>
+        <Route exact path='/profile'>
+          <Profile
+            user = {user}
+            bookmarked={bookmarked}
+            shops = {shops}
+            comments = {comments}
+            onRemoveBookmark = {handleRemoveBookmarkClick}/>
+        </Route>
+      </Switch>
+    </div>
+  );
+  
   return (
     <div className="App">
       <Header 

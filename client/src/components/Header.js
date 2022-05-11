@@ -50,7 +50,6 @@ function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState,
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
                 <Nav.Link onClick={handleGoHome}>Home</Nav.Link>
-                <Nav.Link onClick={handleGoAddShop}>Add</Nav.Link>
                 {/* <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link> */}
                 <Form.Select aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
                     <option value="All">All</option>
@@ -62,6 +61,7 @@ function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState,
             <Nav>
                 <Navbar.Brand>Welcome {user.username}</Navbar.Brand>
                 <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
+                <Nav.Link onClick={handleGoAddShop}>New Shop</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             </Nav>
                 </Navbar.Collapse>

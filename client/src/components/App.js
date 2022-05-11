@@ -110,6 +110,10 @@ function handleDecreaseLikes(updatedLikes) {
   console.log(updatedLikes)
 }
 
+function handleUpdateUser(updatedUser){
+  setUser(updatedUser)
+}
+
 // Filtering Shops 
 function filteredShops() {
   if (Array.isArray(shops)) 
@@ -195,7 +199,8 @@ function filteredShops() {
             bookmarked={bookmarked}
             shops = {shops}
             comments = {comments}
-            onRemoveBookmark = {handleRemoveBookmarkClick}/>
+            onRemoveBookmark = {handleRemoveBookmarkClick}
+            onUpdateUser ={handleUpdateUser}/>
         </Route>
       </Switch>
     </div>
@@ -237,7 +242,8 @@ function filteredShops() {
             bookmarked={bookmarked}
             shops = {shops}
             comments = {comments}
-            onRemoveBookmark = {handleRemoveBookmarkClick}/>
+            onRemoveBookmark = {handleRemoveBookmarkClick}
+            onUpdateUser ={handleUpdateUser}/>
         </Route>
       </Switch>
     </div>

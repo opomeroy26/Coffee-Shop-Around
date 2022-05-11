@@ -95,8 +95,8 @@ function handleShopFormSubmit(e) {
                                             name='wifi'
                                             value={shopForm.wifi}
                                             onChange={handleChange}>
-                                                <option value="true">Yes</option>
-                                                <option value="false">No</option>
+                                                <option value={true}>Yes</option>
+                                                <option value={false}>No</option>
                                         </select>
                                     </div>
                                 </div>

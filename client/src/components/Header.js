@@ -1,8 +1,10 @@
 import React from "react";
-import { Nav, Navbar, Container, Row, Form} from "react-bootstrap";
+import { Nav, Navbar, Container, Row, Form, FormControl, Button} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import { TextField } from "@mui/material";
 
-function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialViewState}) {
+
+function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialViewState, searchTerm, setSearchTerm}) {
     const history = useHistory()
 
     function handleLogout(){
@@ -34,6 +36,10 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
         setViewState(initialViewState)
     }
 
+    function handleSearch(e){
+        e.preventDefault();
+    }
+
     if (user.username === "Admin")
     return (
         <div>
@@ -53,6 +59,19 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
                     <option value="Price">Price</option>
                     <option value="Wifi">Wifi</option>
                 </Form.Select>
+            </Nav>
+            <Nav>
+                <Form className="d-flex" id="search" onSubmit={handleSearch}>
+                    <FormControl
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        value = {searchTerm}
+                        onChange = {(e)=> setSearchTerm(e.target.value)}
+                    />
+        {/* <Button variant="outline-success"onSu>Search</Button> */}
+                </Form>
             </Nav>
             <Nav>
                 <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
@@ -83,12 +102,26 @@ function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialVie
                 {/* <Nav.Link onClick={handleGoHome}>Home</Nav.Link> */}
                 {/* <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link> */}
                 <Form.Select id="value" aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
-                    <option value="All">All</option>
+                    <option value="All">All Shops</option>
                     <option value="Most Liked">Most Liked</option>
                     <option value="Price">Price</option>
                     <option value="Wifi">Wifi</option>
                 </Form.Select>
             </Nav>
+            <Nav>
+        <Form className="d-flex" id="search" onSubmit={handleSearch}>
+        <FormControl
+          type="search"
+          placeholder="Search"
+          className="me-2"
+          aria-label="Search"
+          value = {searchTerm}
+          onChange = {(e)=> setSearchTerm(e.target.value)}
+
+        />
+        {/* <Button variant="outline-success"onSu>Search</Button> */}
+      </Form>
+        </Nav>
             <Nav>
                 <Navbar.Brand id="welcome">Welcome {user.username}!</Navbar.Brand>
                 <Nav.Link onClick={handleGoHome}>Home</Nav.Link>

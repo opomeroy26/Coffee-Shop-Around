@@ -14,6 +14,7 @@ function App() {
   const [comments, setComments] = useState([])
   const [bookmarked, setBookmarked] = useState([])
   const [filterBy, setFilterBy] = useState("All")
+  const [searchTerm, setSearchTerm] = useState("")
   const [likes, setLikes] = useState()
   // const [bookmarkBtn, setBookmarkBtn] = useState(true)
   const initialViewState = {
@@ -127,6 +128,7 @@ function filteredShops() {
         return shop
       }
     })
+    .filter((shop) => shop.name.toLowerCase().includes(searchTerm.toLowerCase()))
     .sort((shop1, shop2) => {
       if (filterBy === "Price") {
         return (shop1.pricing.localeCompare(shop2.pricing))
@@ -165,7 +167,9 @@ function filteredShops() {
         setFilterBy = {setFilterBy} 
         viewState = {viewState}
         setViewState = {setViewState}
-        initialViewState = {initialViewState}/>
+        initialViewState = {initialViewState}
+        searchTerm={searchTerm}
+        setSearchTerm ={setSearchTerm} />
       <Switch>
       <Route exact path= "/addShop">
       <AddShop 
@@ -215,7 +219,9 @@ function filteredShops() {
         setFilterBy = {setFilterBy} 
         viewState = {viewState}
         setViewState = {setViewState}
-        initialViewState = {initialViewState}/>
+        initialViewState = {initialViewState}
+        searchTerm={searchTerm}
+        setSearchTerm ={setSearchTerm}/>
       <Switch>
         <Route exact path="/">
           <ShopContainer

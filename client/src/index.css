@@ -356,3 +356,11 @@ code {
   align-self: center;
   margin-left: 100px;
 } */
+
+#search{
+  color: white;
+  /* background-color: rgb(9, 9, 9); */
+  margin-left: 2px;
+  border-bottom: white;
+}
+

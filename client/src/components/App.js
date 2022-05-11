@@ -17,14 +17,12 @@ function App() {
   const [likes, setLikes] = useState()
   // const [bookmarkBtn, setBookmarkBtn] = useState(true)
   const initialViewState = {
-    longitude: -122.45081176757787,
-    latitude: 37.74653886603073,
+    longitude: -122.42299606634,
+    latitude: 37.77770057882813,
     zoom: 11,
     }
 
 const [viewState, setViewState] = useState(initialViewState)
-
-
 
   //Fetch All Shops 
  useEffect(() => {

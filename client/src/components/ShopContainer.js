@@ -19,7 +19,7 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
         setViewState({
             longitude: shop.longitude,
             latitude: shop.latitude,
-            zoom: 15
+            zoom: 14
         })
     }
 

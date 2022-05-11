@@ -27,17 +27,18 @@ function ShopCard ({shop, onBookmarkClick, user, onAddToComments, onDeleteShop, 
 
   const comment = shopcomments.map((com) => (
 
-    com.user.id === user.id  ?
+    com.user.id === user.id   ?
     <ul key={com.id}>
       <div>
         {/* <Expire delay='8000' > */}
       <button onClick={() => onDeleteComment(com.id)} id="trashicons"><BsTrash/></button><h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h>
-      {/* {com.created_at.toString()} */}  <h id="dates">(Posted on {dates})</h>
+      {/* {com.created_at.toString()}  <h id="dates">(Posted on {dates})</h> */}
       {/* </Expire> */}
     </div>
     </ul>
     : <ul key={com.id}>
-    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> <h id="dates">(Posted on {dates})</h>
+    <h id="username">{com.user.username}</h> <h id="comments">{com.comment}</h> 
+    {/* <h id="dates">(Posted on {dates})</h> */}
     </ul>
     ))
 
@@ -134,7 +135,8 @@ return(
        <br></br>
        {shop.likes} people like this shop
        <br></br>
-       <Button id="icons" onClick={()=> onBookmarkClick(shop)}>{bb.includes(shop.id) ? <BsFillBookmarkFill/> : <BsBookmark/>} </Button>
+       {/* <Button id="icons" onClick={()=> onBookmarkClick(shop)}>{bb.includes(shop.id) ? <BsFillBookmarkFill/> : <BsBookmark/>} </Button> */}
+       <Button id="icons" onClick={()=> onBookmarkClick(shop)}> <BsBookmark/> </Button>
        <Button id ="icons" onClick={() => onSeeMapClick(shop)}><BsFillPinMapFill/></Button>
        <Button id="icons" onClick={() => onDeleteShop(shop)}><BsFillTrashFill/></Button>
       </Card.Text>

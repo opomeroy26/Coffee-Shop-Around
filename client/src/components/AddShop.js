@@ -20,6 +20,7 @@ const [shopForm, setShopForm] = useState(initialShopForm)
 const handleChange = (e) => {
     const {name, value} = e.target;
     setShopForm(shopForm => ({...shopForm, [name]: value}))
+    // console.log(name, value)
 }
 
 function handleShopFormSubmit(e) {
@@ -80,6 +81,7 @@ function handleShopFormSubmit(e) {
                                             name='pricing'
                                             value={shopForm.pricing}
                                             onChange={handleChange}>
+                                                <option value="none">Choose Price Range</option>
                                                 <option value="$">$</option>
                                                 <option value='$$'>$$</option>
                                                 <option value='$$$'>$$$</option>
@@ -94,9 +96,11 @@ function handleShopFormSubmit(e) {
                                             id='wifi'
                                             name='wifi'
                                             value={shopForm.wifi}
-                                            onChange={handleChange}>
-                                                <option value={true}>Yes</option>
-                                                <option value={false}>No</option>
+                                            onChange={handleChange}
+                                            >
+                                                <option value="none">Choose Response</option>
+                                                <option value="true">Yes</option>
+                                                <option value="false">No</option>
                                         </select>
                                     </div>
                                 </div>

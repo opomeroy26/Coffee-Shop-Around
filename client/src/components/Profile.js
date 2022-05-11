@@ -59,7 +59,7 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </Tooltip>
         </Col>
         </Container>
-        <Button onClick={()=> setSeeBookmark(false)}> Bookmarked Items</Button>
+        <Button id="value" onClick={()=> setSeeBookmark(false)}> Bookmarked Items</Button>
         {/* <Button onClick={()=> handleSeeYourComments()}>See Comments</Button> */}
         {/* <Button onClick={()=> handleSeeForm()}>Edit Profile</Button> */}
         
@@ -87,7 +87,7 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </Tooltip>
         </Col>
         </Container>
-        <Button onClick={()=>handleSeeBookmark()}>Bookmarked Items</Button>
+        <Button id="value" onClick={()=>handleSeeBookmark()}>Bookmarked Items</Button>
         {/* <Button onClick={()=> handleSeeYourComments()}>See Comments</Button> */}
         {/* <Button onClick={()=> setSeeEditForm(false)}>Edit Profile</Button> */}
 
@@ -115,7 +115,7 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
     </Tooltip>
     </Col>
     </Container>
-    <Button onClick={()=> setSeeBookmark(true)}>Bookmarked Items</Button>
+    <Button id="value" onClick={()=> setSeeBookmark(true)}>Bookmarked Items</Button>
     {/* <Button onClick={()=> setSeeYourComments(false)}>See Comments</Button> */}
     {/* <Button onClick={()=> handleSeeForm()}>Edit Profile</Button> */}
 
@@ -142,7 +142,7 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark}) {
         </IconButton>
         </Tooltip>
         </Container>
-        <Button onClick={()=> setSeeBookmark(true)}> Bookmarked Items</Button> 
+        <Button id="value" onClick={()=> setSeeBookmark(true)}> Bookmarked Items</Button> 
         {/* <Button onClick={()=> setSeeYourComments(true)}>See Comments</Button> */}
         {/* <Button onClick={()=> setSeeEditForm(true)}>Edit Profile</Button> */}
         </div>

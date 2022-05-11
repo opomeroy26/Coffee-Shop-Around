@@ -1,7 +1,13 @@
 class ShopsController < ApplicationController
 #    skip_before_action :authorize 
     # skip_before_action :authorize, only: [:index, :show, :destroy, :update, :create]
+    skip_before_action :authorize, only: [:index]
 # works once app is running, but when i restart server something breaks and i need to recomment it in ^
+# def action 
+#     date_to_check = DateTime.now
+#     render json: @comments.where(created_at: date_to_check.beginning_of_day..date_to_check.end_of_day)
+# end
+
 
     def index 
         render json: Shop.all

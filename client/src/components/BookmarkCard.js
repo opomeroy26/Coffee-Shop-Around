@@ -1,39 +1,55 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import Map, {Marker, Popup} from 'react-map-gl'; 
+import 'mapbox-gl/dist/mapbox-gl.css';
+import {BsBookmark, BsBookmarkDash, BsFillBookmarkFill, BsHeart, BsFillPinMapFill, BsTrash} from "react-icons/bs";
 
 function BookmarkCard ({bookmark, user, onRemoveBookmark}){
+  const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
 
     if (user.username === bookmark.user.username)
+
     return(
-        <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="https://cdn.pixabay.com/photo/2013/08/11/19/46/coffee-171653_1280.jpg" />
+        <Card style={{ width: '18rem'}} id="bookmark_card">
+        <Card variant="top">
+        <Map
+                        initialViewState={{
+                        longitude: bookmark.shop.longitude,
+                        latitude: bookmark.shop.latitude,
+                        zoom: 13,
+                        }}
+                        // initialViewState = {{...viewState}}
+            
+                        // style={{width: 1200, height: 1200}}
+                      
+                        // style = {{width:1150, height: 500 }}
+                        style = {{width: '18rem', height: 200}}
+                        mapStyle="mapbox://styles/mapbox/streets-v9"
+                        mapboxAccessToken={MAPBOX_TOKEN}
+                    >
+                    
+                            <Marker 
+                                latitude = {bookmark.shop.latitude}
+                                longitude = {bookmark.shop.longitude}
+                                color="red"
+                            />
+                            
+                            
+        </Map>
+        </Card>
+
         <Card.Body>
           <Card.Title>{bookmark.shop.name}</Card.Title>
           <Card.Text>
            {bookmark.shop.pricing}
            <br></br> 
-           Wifi: {bookmark.shop.wifi ? "Yes" : "No"}
+           {bookmark.shop.wifi ? "Has" : "No"} wifi
            <br></br>
-           Liked by: {bookmark.shop.likes} people
+           {bookmark.shop.likes} people like this shop
           </Card.Text>
-          <Button variant="secondary">Open Comments</Button>
-          <Button variant="primary">SEE ON MAP</Button>
-          <Button variant="primary" onClick={()=> onRemoveBookmark(bookmark)}>Remove from Bookmarks</Button>
-      
-          <form id='form' >
-            <label> Comment: </label>
-              <input 
-                type="text" 
-                name="comment"
-                placeholder = 'Write a comment'
-                // value={form.comment} 
-                // onChange={handleChange} 
-                />
-              {/* <button type="submit">Post</button> */}
-            <input type="submit" value="Submit" />
-          </form>
-          {/* <button onClick={() => onDeleteShop(shop)}>Delete Shop</button> */}
+          {/* <Button id="icons"><BsHeart/></Button> */}
+          <Button variant="primary" id="icons" onClick={()=> onRemoveBookmark(bookmark)}><BsBookmarkDash/></Button>
         </Card.Body>
       </Card>
     )

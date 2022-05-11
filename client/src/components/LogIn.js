@@ -46,7 +46,8 @@ export default function LogIn( {setUser}) {
         }).then((r) => {
             if (r.ok) {
                 r.json().then((user)=> setUser(user));
-                history.push("/")
+                history.push("/");
+                // window.location.reload(true);
             } else {
                 r.json().then((err) => window.alert(err.errors))
             }

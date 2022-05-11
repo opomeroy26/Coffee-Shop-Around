@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 
-function Header ({user, setUser, setFilterBy, filterBy}) {
+function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState, initialViewState}) {
     const history = useHistory()
 
     function handleLogout(){
@@ -35,10 +35,14 @@ function Header ({user, setUser, setFilterBy, filterBy}) {
         setFilterBy(e.target.value)
     }
 
+    function handleViewState(){
+        setViewState(initialViewState)
+    }
+
     if (user.username === "Admin")
     return (
         <div>
-            <Row>
+            <Row id = "row">
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="header">
             <Container>
                 <Navbar.Brand>Coffee Shop Around</Navbar.Brand>
@@ -69,16 +73,15 @@ function Header ({user, setUser, setFilterBy, filterBy}) {
 
 
     return (
-        <div>
-            <Row>
-            <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" id="header">
+            <Row id="row"> 
+            <Navbar bg="dark" variant="dark" id="header">
             <Container>
                 <Navbar.Brand>Coffee Shop Around</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
                 <Nav.Link onClick={handleGoHome}>Home</Nav.Link>
-                <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link>
+                {/* <Nav.Link onClick={handleGoBookmarked}>Bookmarked</Nav.Link> */}
                 <Form.Select aria-label="Default select example" name="sort" onChange={handleFilterBy} value={filterBy}>
                     <option value="All">All</option>
                     <option value="Most Liked">Most Liked</option>
@@ -90,12 +93,12 @@ function Header ({user, setUser, setFilterBy, filterBy}) {
                 <Navbar.Brand>Welcome {user.username}</Navbar.Brand>
                 <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link>
             </Nav>
                 </Navbar.Collapse>
             </Container>
             </Navbar>
             </Row>
-        </div>
     )
 }
 

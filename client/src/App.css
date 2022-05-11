@@ -1,5 +1,10 @@
 .App {
   text-align: center;
+   background-color: rgb(29, 38, 41);
+   /* background-color: #65d0ed; */
+  /* background-image: url("https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"); */
+  /* background-image: url("https://images.unsplash.com/photo-1606486544554-164d98da4889?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Y29mZmVlJTIwYmVhbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60https://images.unsplash.com/photo-1513530176992-0cf39c4cbed4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8Y29mZmVlJTIwYmVhbnN8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvZmZlZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"); */
+  /* background-attachment: fixed; */
 }
 
 .App-logo {
@@ -22,6 +27,8 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+  min-width: 100vw;
+  margin-right: none;
 }
 
 .App-link {

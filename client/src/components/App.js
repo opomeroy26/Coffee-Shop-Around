@@ -22,6 +22,13 @@ function App() {
   const [filterBy, setFilterBy] = useState("All")
   const [likes, setLikes] = useState()
   const [bookmarkBtn, setBookmarkBtn] = useState(true)
+  const initialViewState = {
+    longitude: -122.45081176757787,
+    latitude: 37.74653886603073,
+    zoom: 11,
+    }
+
+const [viewState, setViewState] = useState(initialViewState)
 
 
 
@@ -36,14 +43,14 @@ function App() {
 },[comments, likes])
 
 
+
+
 //Fetch All Comments 
 useEffect(() => {
   fetch("/comments")
   .then((resp) => resp.json())
   .then((comment) => setComments(comment))
 },[] )
-
-console.log(comments)
 
 //Fetch Bookmarked
 useEffect(() => {
@@ -120,26 +127,53 @@ function handleDecreaseLikes(updatedLikes) {
   console.log(updatedLikes)
 }
 
-//Filtering Shops 
-const filteredShops = shops?.filter((shop) => {
-  if (filterBy === "All") {
-    return shop
-  } else if (filterBy === "Wifi") {
-    return (shop.wifi === true) 
-  } else {
-    return shop
-  }
-})
-.sort((shop1, shop2) => {
-  if (filterBy === "Price") {
-    return (shop1.pricing.localeCompare(shop2.pricing))
-   } else if (filterBy === "Most Liked") {
-     return (shop2.likes - shop1.likes)
-   } else {
-      return shop1.id - shop2.id
+// Filtering Shops 
+// const filteredShops = shops.filter((shop) => {
+//   if (filterBy === "All") {
+//     return shop
+//   } else if (filterBy === "Wifi") {
+//     return (shop.wifi === true) 
+//   } else {
+//     return shop
+//   }
+// })
+// .sort((shop1, shop2) => {
+//   if (filterBy === "Price") {
+//     return (shop1.pricing.localeCompare(shop2.pricing))
+//    } else if (filterBy === "Most Liked") {
+//      return (shop2.likes - shop1.likes)
+//    } else {
+//       return shop1.id - shop2.id
+//     }
+//   }
+// )
+
+function filteredShops() {
+  if (Array.isArray(shops)) 
+  {
+    return shops.filter((shop) => {
+      if (filterBy === "All") {
+        return shop
+      } else if (filterBy === "Wifi") {
+        return (shop.wifi === true) 
+      } else {
+        return shop
+      }
+    })
+    .sort((shop1, shop2) => {
+      if (filterBy === "Price") {
+        return (shop1.pricing.localeCompare(shop2.pricing))
+       } else if (filterBy === "Most Liked") {
+         return (shop2.likes - shop1.likes)
+       } else {
+          return shop1.id - shop2.id
+        }
+      }
+    )
+    } else {
+      return []
     }
   }
-)
 
 //Fetch User for Login
  useEffect(() => {
@@ -149,6 +183,7 @@ const filteredShops = shops?.filter((shop) => {
      } 
    });
  }, []);
+
 
  if (!user) return <LogIn setUser = {setUser} />
 
@@ -194,7 +229,7 @@ const filteredShops = shops?.filter((shop) => {
       <Profile
         user = {user}/>
     </Route>
-    <Route exact path='/bookmarked'>
+    {/* <Route exact path='/bookmarked'>
       <Bookmarked
       bookmarked={bookmarked}
       shops = {shops}
@@ -202,7 +237,7 @@ const filteredShops = shops?.filter((shop) => {
       user = {user}
       // onRemoveBookmark = {handleRemoveBookmarkClick}
       />
-    </Route>
+    </Route> */}
 
   </Switch>
 </div>
@@ -213,11 +248,14 @@ const filteredShops = shops?.filter((shop) => {
         user={user} 
         setUser={setUser}
         filterBy = {filterBy}
-        setFilterBy = {setFilterBy} />
+        setFilterBy = {setFilterBy} 
+        viewState = {viewState}
+        setViewState = {setViewState}
+        initialViewState = {initialViewState}/>
       <Switch>
         <Route exact path="/">
           <ShopContainer
-            shops = {filteredShops}
+            shops = {filteredShops()}
             comments = {comments}
             onBookmarkClick = {handleBookmarkClick}
             user= {user}
@@ -231,19 +269,25 @@ const filteredShops = shops?.filter((shop) => {
             setLikes = {setLikes}
             bookmarkBtn = {bookmarkBtn}
             onDecreaseLikes = {handleDecreaseLikes}
+            viewState={viewState}
+            setViewState={setViewState}
             />
         </Route>
         <Route exact path='/profile'>
           <Profile
-            user = {user}/>
+            user = {user}
+            bookmarked={bookmarked}
+            shops = {shops}
+            comments = {comments}
+            onRemoveBookmark = {handleRemoveBookmarkClick}/>
         </Route>
-        <Route exact path='/bookmarked'>
+        {/* <Route exact path='/bookmarked'>
           <Bookmarked
           shops = {shops}
           bookmarked = {bookmarked}
           user={user}
           onRemoveBookmark = {handleRemoveBookmarkClick}/>
-        </Route>
+        </Route> */}
       </Switch>
     </div>
   );

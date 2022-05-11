@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 30.minute do 
+every 5.minutes do 
     rake "comments:delete_12_hours"
 end

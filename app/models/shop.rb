@@ -3,5 +3,4 @@ class Shop < ApplicationRecord
   has_many :comments 
   has_many :bookmarks
 
-  
 end

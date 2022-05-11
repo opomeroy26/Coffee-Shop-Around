@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   patch "/shops/:id/likes", to: "shops#increment_likes"
 
+  # get "/shopcoms", to: "shops#comments"
+
   
 
 

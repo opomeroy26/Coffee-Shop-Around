@@ -18,6 +18,12 @@ class ShopsController < ApplicationController
         render json: shop, status: :ok
     end
 
+    # def comments 
+    #     date_to_check = DateTime.now
+    #     shop = Comment.where(created_at: date_to_check.beginning_of_day..date_to_check.end_of_day)
+    #     render json: shop
+    # end
+
     def create 
         shop = Shop.create!(shop_params)
         render json: shop, status: :created

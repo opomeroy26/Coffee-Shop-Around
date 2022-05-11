@@ -9,6 +9,11 @@ class ShopSerializer < ActiveModel::Serializer
 #     # Shop.find_by(@comments)
 #     Comment.where(shop: == Shop)
 #     Comment.where(created_at: date_to_check.beginning_of_day..date_to_check.end_of_day)
-    
 # end
+
+# def comments
+#   date_to_check = DateTime.now
+#   Comment.where(created_at: date_to_check.beginning_of_day..date_to_check.end_of_day)
+# end
+
 end

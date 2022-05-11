@@ -68,14 +68,17 @@ export default function LogIn( {setUser}) {
             alignItems: 'center',
           }}
         >
+      
           <Typography component="h1" variant="h5">
             Coffee Shop Around
           </Typography>
+          {/* <img id="firstlogo" src={require ('../CoffeeShopAround.png')} alt="logo"/> */}
+          {/* <img id="firstlogo" src={require ('../CoffeeShopAround.png')} alt="logo"/> */}
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h6">
-            Sign in
+            Log in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -102,10 +105,10 @@ export default function LogIn( {setUser}) {
               value={password}
               onChange={(e)=> setPassword(e.target.value)}
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth

@@ -53,7 +53,7 @@ export default function SignUp( {setUser}) {
       <div>
           {showLogin ? (
     <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" id="sign_in_container">
         <CssBaseline />
         <Box
           sx={{
@@ -63,6 +63,9 @@ export default function SignUp( {setUser}) {
             alignItems: 'center',
           }}
         >
+          <Typography component="h1" variant="h5">
+            Coffee Shop Around
+          </Typography>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
@@ -77,7 +80,7 @@ export default function SignUp( {setUser}) {
                   name="username"
                   required
                   fullWidth
-                  id="username"
+                  id="username-id"
                   label="Username"
                   autoFocus
                   value = {username}

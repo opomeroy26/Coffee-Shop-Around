@@ -14,9 +14,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import SignUp from "./SignUp";
-import Contact from "./Contact";
-import { NavLink } from "react-router-dom";
-import { Route } from "react-router-dom";
+// import Contact from "./Contact";
+
 
 function Copyright() {
     return (
@@ -32,7 +31,7 @@ export default function LogIn( {setUser}) {
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [showLogin, setShowLogin] = useState(true)
-    const [noshowContactForm, setContactForm] = useState(true)
+    // const [noshowContactForm, setContactForm] = useState(true)
     const history = useHistory()
 
     function handleSubmit(e) {
@@ -56,10 +55,10 @@ export default function LogIn( {setUser}) {
 
 // if (showLogin === true) 
   return (
-    <div>
+    <div id="sign_in" >
         {showLogin ? (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
+    <ThemeProvider theme={theme} >
+      <Container component="main" maxWidth="xs" id="sign_in_container" >
         <CssBaseline />
         <Box
           sx={{
@@ -69,10 +68,13 @@ export default function LogIn( {setUser}) {
             alignItems: 'center',
           }}
         >
+          <Typography component="h1" variant="h5">
+            Coffee Shop Around
+          </Typography>
           <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
             <LockOutlinedIcon />
           </Avatar>
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h6">
             Sign in
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
@@ -80,7 +82,7 @@ export default function LogIn( {setUser}) {
               margin="normal"
               required
               fullWidth
-              id="username"
+              id="username-id"
               label="Username"
               name="username"
               autoComplete="username"
@@ -117,9 +119,9 @@ export default function LogIn( {setUser}) {
                 <Button onClick={() => setShowLogin(false)}>
                   {"Don't have an account? Sign Up"}
                 </Button>
-                <Button onClick={() => setContactForm(false)}>
+                {/* <Button onClick={() => setContactForm(false)}>
                   {"contact"}
-                </Button>
+                </Button> */}
                 
               </Grid>
             </Grid>

@@ -1,10 +1,9 @@
 import React from "react";
-import { Nav, Navbar, Container, NavDropdown, Dropdown, Row, Form} from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Nav, Navbar, Container, Row, Form} from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 
 
-function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState, initialViewState}) {
+function Header ({user, setUser, setFilterBy, filterBy, setViewState, initialViewState}) {
     const history = useHistory()
 
     function handleLogout(){
@@ -23,9 +22,6 @@ function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState,
         history.push("/")
     }
 
-    function handleGoBookmarked(){
-        history.push("/bookmarked")
-    }
 
     function handleGoAddShop(){
         history.push("/addShop")
@@ -63,6 +59,7 @@ function Header ({user, setUser, setFilterBy, filterBy, viewState, setViewState,
                 <Nav.Link onClick={handleGoToProfile}>Profile</Nav.Link>
                 <Nav.Link onClick={handleGoAddShop}>New Shop</Nav.Link>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                <Nav.Link onClick={()=> handleViewState()}>Map Reset</Nav.Link>
             </Nav>
                 </Navbar.Collapse>
             </Container>

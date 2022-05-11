@@ -8,19 +8,12 @@ import "../App.css";
 
 
  const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YjRvajIwMmx3M2Nud2Q3Y3JjZTI4In0.FFNyRHVkJvPgNERbB03mRw';
-// const MAPBOX_TOKEN = 'pk.eyJ1Ijoib3BvbWVyb3kyNiIsImEiOiJjbDJ0YXU0MGQwMWNyM2NvMnprZ3htNGY3In0.kHGzJWzWycU6Ybvhzdu2zw'
+
 
 
 function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments, onDeleteShop, onDeleteComment, onLikeClick, setShops, bookmarked, onUpdateLikes, likes, setLikes, bookmarkBtn, onDecreaseLikes, viewState, setViewState}) {
     const [showPopup, setShowPopup] = useState({0: false,});
 
-    // const initialViewState = {
-    //     longitude: -122.45081176757787,
-    //     latitude: 37.74653886603073,
-    //     zoom: 11,
-    //     }
-    
-    // const [viewState, setViewState] = useState(initialViewState)
 
     function handleSeeMapClick(shop){
         setViewState({
@@ -57,26 +50,10 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
 
     return(
         <div>
-             {/* <Container id = "container"> */}
-                {/* <Col>   */}
-                {/* <Col  id="shop_container">
-                     {shop}
-                </Col> */}
                     <Col id="map_container">  
-                    {/* <button onClick={()=> setViewState(initialViewState)}>return to overview</button>       */}
                     <Map
-                        // initialViewState={{
-                        // longitude: -122.4,
-                        // latitude: 37.8,
-                        // zoom: 11,
-                        // }}
-                        // initialViewState = {{...viewState}}
                         {...viewState}
-                        // style={{width: 1200, height: 1200}}
-                        
                         onMove={evt => setViewState(evt.viewState)}
-                        // style = {{width:1150, height: 500 }}
-                        // style = {{width: 800, height: 800}}
                         id="map"
                         mapStyle="mapbox://styles/mapbox/streets-v9"
                         mapboxAccessToken={MAPBOX_TOKEN}
@@ -108,8 +85,6 @@ function ShopContainer ({shops, comments, onBookmarkClick, user, onAddToComments
                     <Col  id="shop_container">
                      {shop}      
                 </Col>
-                {/* </Col> */}
-            {/* </Container> */}
         </div>
     )
 }

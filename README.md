@@ -8,10 +8,10 @@ Users are able to create an accoutn and login in from an initial sign-in page. O
 An admin has the power to add and delete shops to the home page.
 
 
-## Visuals
+## Walkthrough
 
 ## LogIn!
-[Uploading Screen Shot 2022-05-12 at 10.50.31.png…]()
+![Screen Shot 2022-05-12 at 10 56 15](https://user-images.githubusercontent.com/95717751/168138692-d37f4c0d-c96b-4f8f-8af3-0352e74435c7.png)
 
 ## Signup
 ![Screen Shot 2022-05-12 at 10 51 00](https://user-images.githubusercontent.com/95717751/168137742-75a495f5-765c-4982-9195-b2a808999e99.png)

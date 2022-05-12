@@ -39,10 +39,12 @@ An admin has the power to add and delete shops to the home page.
 
 
 ## Backend
-This application's backend was built with Ruby on Rails. After cloning, the backend can be launched by runing `rails db:migrate` to set up the database, `rails db:seed` to seed some initial seed data, and `bundle install` to install the necessary dependencies. Finally, you can run `rails s` to launch the server.
+This application's backend was built with Ruby on Rails, version 7.0.2.4. After cloning, the backend can be launched by runing `rails db:migrate` to set up the database, `rails db:seed` to seed some initial seed data, and `bundle install` to install the necessary dependencies. Finally, you can run `rails s` to launch the server.
 
 ## Frontend
-This application's frontend was created with HTML, JavaScript, React, CSS, React Bootstrap, and Material UI. After cloning, the frontend can be launched by running `npm install --prefix client` to install the necessary dependencies and `npm start --prefix client` to launch the frontend server. 
+This application's frontend was created with HTML, JavaScript, React(version 18.1.0), CSS, React Bootstrap, and Material UI. After cloning, the frontend can be launched by running `npm install --prefix client` to install the necessary dependencies and `npm start --prefix client` to launch the frontend server. 
+
+
 
 ## Created By:
 

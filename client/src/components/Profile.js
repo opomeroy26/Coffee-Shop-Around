@@ -82,7 +82,7 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark, onUpdate
         </Container>
         <Button id="value" onClick={()=> setSeeBookmark(false)}> Bookmarked Items</Button>
         {/* <Button onClick={()=> handleSeeYourComments()}>See Comments</Button> */}
-        <Button value="id" onClick={()=> handleSeeForm()}>Edit Profile</Button>
+        <Button value="id" id="value"  onClick={()=> handleSeeForm()}>Edit Profile</Button>
         
 
     <div id ="bookmark">

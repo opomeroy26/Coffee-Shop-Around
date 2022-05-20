@@ -100,7 +100,6 @@ const commentsShowing = showComments ? <div>
             placeholder = 'Write a comment'
             value={form.comment} 
             onChange={handleChange} />
-          {/* <button type="submit">Post</button> */}
         <input type="submit" value="Submit" />
       </form>
   </div>: null

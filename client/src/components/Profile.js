@@ -51,7 +51,6 @@ function Profile ({shops, bookmarked, user, comments, onRemoveBookmark, onUpdate
 
     function handleSubmit(e){
         // e.preventDefault();
-        // console.log(username, password, location, profile_img)
         fetch(`/users/${user.id}`, {
             method: 'PATCH',
             headers: {

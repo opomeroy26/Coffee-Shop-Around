@@ -14,7 +14,7 @@ class ShopSerializer < ActiveModel::Serializer
 def comments
   date_to_check = DateTime.now
   self.object.comments.where(postdate: date_to_check.beginning_of_day..date_to_check.end_of_day)
-  # self.object.comments.where(created_at: date_to_check.beginning_of_hour..date_to_check.end_of_hour)
+  # self.object.comments.where(created_at: date_to_check.beginning_of_minute..date_to_check.end_of_minute)
 end
 
 end

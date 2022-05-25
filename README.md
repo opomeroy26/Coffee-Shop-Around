@@ -52,4 +52,4 @@ This application's frontend was created with HTML, JavaScript, React(version 18.
 
 Github: https://github.com/opomeroy26
 
-LinkedIn: https://www.linkedin.com/in/olivia-pomeroy-367578176/
+LinkedIn: https://www.linkedin.com/in/olivia-pomeroy/

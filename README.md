@@ -22,6 +22,7 @@ Coffee Shop Around is an application that allows users to view coffee shops in t
 * Comment on coffee shops
 
 ## Walkthrough
+[Video Walkthrough](https://www.loom.com/share/ade025582e1b45acb20c6aa531789cd2)
 
 ## LogIn
 ![Screen Shot 2022-05-12 at 10 56 15](https://user-images.githubusercontent.com/95717751/168138692-d37f4c0d-c96b-4f8f-8af3-0352e74435c7.png)

@@ -60,6 +60,19 @@ This application's backend was built with Ruby on Rails, version 7.0.2.4. After 
 This application's frontend was created with HTML, JavaScript, React(version 18.1.0), CSS, React Bootstrap, and Material UI. After cloning, the frontend can be launched by running `npm install --prefix client` to install the necessary dependencies and `npm start --prefix client` to launch the frontend server
 ![CoffeeShopAround](https://user-images.githubusercontent.com/95717751/170565026-e66c01e8-8e85-40df-a96a-7e1527a248db.png)
 
+## Contributing to Coffee Shop Around
+<!--- If your README is long or you have some specific process or steps you want contributors to follow, consider creating a separate CONTRIBUTING.md file--->
+To contribute to Coffee Shop Around, follow these steps:
+
+1. Fork this repository.
+2. Create a branch: `git checkout -b <branch_name>`.
+3. Make your changes and commit them: `git commit -m '<commit_message>'`
+4. Push to the original branch: `git push origin <project_name>/<location>`
+5. Create the pull request.
+
+Alternatively see the GitHub documentation on [creating a pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+
+
 
 ## Created By:
 

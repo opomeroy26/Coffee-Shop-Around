@@ -3,9 +3,24 @@ Coffee Shop Around is an application that allows users to view coffee shops in t
 
 ## User Stories
 Users are able to create an accoutn and login in from an initial sign-in page. Once signed-in, users will view the coffee shops on the home page, along with a map showing all their locations. User's can scroll through the coffee shops and see the price range, wifi options, and how many people like the shop. Users have the option to like a shop or add it to their bookmarks for later viewing. User's are also able to see comments left for each shop and post a comment and delete their own comment. All comments will delete at the end of the day automatically, so users are continously getting only the most recent data for that day. Each shop has a link to the map that will show a it's precise location. A user can filter through shops based on wifi, pricing, and most liked, as well as search for shop names.
+* A user will be able to login and signup.
+* View local coffee shops and see the price range, wifi, likes, location, and comments
+  * Like shops to increase rating
+  * Bookmark coffee shops to you profile page
+  * Leave or respond to comments, which will expire at the end of each day 
+  * Click on shop map icon and see a close-up location of the shop on the map
+  * Filter through shops based on specific attributes, or search by shop name
+* See a general map view of all coffee shop locations
+  * Can click on map pop-ups to get short description of shop
+  * Can reset map to general view
+ * Edit your profile
 
 ## Admin Stories
-An admin has the power to add and delete shops to the home page.
+* An admin is able to login as an admin
+* View all local coffee shops 
+* Add a new coffee shop
+* Delete coffee shops
+* Comment on coffee shops
 
 
 ## Walkthrough
@@ -40,10 +55,11 @@ An admin has the power to add and delete shops to the home page.
 
 ## Backend
 This application's backend was built with Ruby on Rails, version 7.0.2.4. After cloning, the backend can be launched by runing `rails db:migrate` to set up the database, `rails db:seed` to seed some initial seed data, and `bundle install` to install the necessary dependencies. Finally, you can run `rails s` to launch the server.
+<img width="578" alt="Screen Shot 2022-05-26 at 12 29 29" src="https://user-images.githubusercontent.com/95717751/170562921-7bdd5dec-fb86-4f71-b7ff-4408552a64b0.png">
 
 ## Frontend
-This application's frontend was created with HTML, JavaScript, React(version 18.1.0), CSS, React Bootstrap, and Material UI. After cloning, the frontend can be launched by running `npm install --prefix client` to install the necessary dependencies and `npm start --prefix client` to launch the frontend server. 
-
+This application's frontend was created with HTML, JavaScript, React(version 18.1.0), CSS, React Bootstrap, and Material UI. After cloning, the frontend can be launched by running `npm install --prefix client` to install the necessary dependencies and `npm start --prefix client` to launch the frontend server
+![CoffeeShopAround](https://user-images.githubusercontent.com/95717751/170565026-e66c01e8-8e85-40df-a96a-7e1527a248db.png)
 
 
 ## Created By:
@@ -52,4 +68,4 @@ This application's frontend was created with HTML, JavaScript, React(version 18.
 
 Github: https://github.com/opomeroy26
 
-LinkedIn: https://www.linkedin.com/in/olivia-pomeroy/
+LinkedIn: https://www.linkedin.com/in/olivia-pome

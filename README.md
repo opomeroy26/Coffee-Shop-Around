@@ -2,7 +2,6 @@
 Coffee Shop Around is an application that allows users to view coffee shops in the San Francisco Bay Area in order to plan out which they would like to go work from or go to in general. Please find this application deployed here: https://coffee-shop-around.herokuapp.com/. 
 
 ## User Stories
-Users are able to create an accoutn and login in from an initial sign-in page. Once signed-in, users will view the coffee shops on the home page, along with a map showing all their locations. User's can scroll through the coffee shops and see the price range, wifi options, and how many people like the shop. Users have the option to like a shop or add it to their bookmarks for later viewing. User's are also able to see comments left for each shop and post a comment and delete their own comment. All comments will delete at the end of the day automatically, so users are continously getting only the most recent data for that day. Each shop has a link to the map that will show a it's precise location. A user can filter through shops based on wifi, pricing, and most liked, as well as search for shop names.
 * A user will be able to login and signup.
 * View local coffee shops and see the price range, wifi, likes, location, and comments
   * Like shops to increase rating
@@ -21,7 +20,6 @@ Users are able to create an accoutn and login in from an initial sign-in page. O
 * Add a new coffee shop
 * Delete coffee shops
 * Comment on coffee shops
-
 
 ## Walkthrough
 
